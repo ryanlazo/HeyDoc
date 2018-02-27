@@ -34,7 +34,7 @@ public class SpecialtyFragment extends Fragment {
     String[] specialtyArray = {"Allergy", "Chiropractic", "Dentist", "Dermatologist"};
     ArrayList<String> fieldsList = new ArrayList<>();
     fieldsList.addAll(Arrays.asList(specialtyArray));
-    listAdapter = new ArrayAdapter<String>(getActivity(), android.R.layout.simple_list_item_1, fieldsList);
+    listAdapter = new ArrayAdapter<String>(getActivity(), R.layout.specialty_list_item, fieldsList);
     specialty.setAdapter(listAdapter);
 
     return view;

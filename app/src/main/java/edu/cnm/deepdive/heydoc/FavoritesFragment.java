@@ -36,8 +36,7 @@ public class FavoritesFragment extends Fragment {
     if (bundle == null) {
       bundle = new Bundle();
     }
-    // Retrieve argument values (or default values) from the bundle.
-    replaceableText = bundle.getString(TEXT_ARG_KEY, "You didn't tell me anything!");
+    replaceableText = bundle.getString(TEXT_ARG_KEY, "Your Favorite Doctors");
     replaceableColor = bundle.getInt(COLOR_ARG_KEY, Color.YELLOW);
   }
 

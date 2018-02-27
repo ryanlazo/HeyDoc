@@ -18,12 +18,15 @@ import android.view.MenuItem;
 public class MainActivity extends AppCompatActivity
     implements NavigationView.OnNavigationItemSelectedListener {
 
+
+
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_main);
     Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
     setSupportActionBar(toolbar);
+
 
     FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
     fab.setOnClickListener(new View.OnClickListener() {
@@ -45,6 +48,8 @@ public class MainActivity extends AppCompatActivity
     FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
     HomeFragment homeFragment = new HomeFragment();
     transaction.replace(R.id.container1, homeFragment).addToBackStack("home").commit();
+
+
   }
 
 
@@ -88,7 +93,10 @@ public class MainActivity extends AppCompatActivity
 
     int id = item.getItemId();
 
-    if (id == R.id.nav_specialty) {
+    if (id == R.id.nav_date) {
+      DateTimeFragment specialtyFragment = new DateTimeFragment();
+      transaction.replace(R.id.container1, specialtyFragment).addToBackStack("home").commit();
+    } else if (id == R.id.nav_specialty) {
       SpecialtyFragment specialtyFragment = new SpecialtyFragment();
       transaction.replace(R.id.container1, specialtyFragment).addToBackStack("home").commit();
     } else {
@@ -99,17 +107,9 @@ public class MainActivity extends AppCompatActivity
         case R.id.nav_camera:
           bundle.putString(FavoritesFragment.TEXT_ARG_KEY, "Camera");
           break;
-        case R.id.nav_gallery:
+        case R.id.nav_date:
           bundle.putString(FavoritesFragment.TEXT_ARG_KEY, "Gallery");
           bundle.putInt(FavoritesFragment.COLOR_ARG_KEY, Color.DKGRAY);
-          break;
-        case R.id.nav_slideshow:
-          bundle.putString(FavoritesFragment.TEXT_ARG_KEY, "Awesome Slide Show");
-          bundle.putInt(FavoritesFragment.COLOR_ARG_KEY, Color.WHITE);
-          break;
-        case R.id.nav_manage:
-          bundle.putString(FavoritesFragment.TEXT_ARG_KEY, "Do management stuff");
-          bundle.putInt(FavoritesFragment.COLOR_ARG_KEY, Color.MAGENTA);
           break;
       }
       frag.setArguments(bundle);
@@ -119,11 +119,25 @@ public class MainActivity extends AppCompatActivity
       DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
       drawer.closeDrawer(GravityCompat.START);
 
-
-
-
-    return true;
+      return true;
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 
