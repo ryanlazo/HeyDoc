@@ -6,7 +6,7 @@
   android:layout_width="match_parent"
   android:layout_height="match_parent"
   tools:context="edu.cnm.deepdive.heydoc.MainActivity"
-  >
+  android:titleTextColor="@color/Text">
 
   <android.support.design.widget.AppBarLayout
     android:layout_width="match_parent"
@@ -19,7 +19,7 @@
       android:layout_height="?attr/actionBarSize"
       android:background="?attr/colorAccent"
       app:popupTheme="@style/AppTheme.PopupOverlay"
-      android:titleTextColor="@color/Text"/>
+      />
 
   </android.support.design.widget.AppBarLayout>
 

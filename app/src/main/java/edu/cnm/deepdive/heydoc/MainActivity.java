@@ -1,8 +1,10 @@
 package edu.cnm.deepdive.heydoc;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -40,7 +42,11 @@ public class MainActivity extends AppCompatActivity
 
     NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
     navigationView.setNavigationItemSelectedListener(this);
+    FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+    HomeFragment homeFragment = new HomeFragment();
+    transaction.replace(R.id.container1, homeFragment).addToBackStack("home").commit();
   }
+
 
   @Override
   public void onBackPressed() {
@@ -77,25 +83,49 @@ public class MainActivity extends AppCompatActivity
   @SuppressWarnings("StatementWithEmptyBody")
   @Override
   public boolean onNavigationItemSelected(MenuItem item) {
-    // Handle navigation view item clicks here.
+
+    FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+
     int id = item.getItemId();
 
-    if (id == R.id.nav_camera) {
-      // Handle the camera action
-    } else if (id == R.id.nav_gallery) {
+    if (id == R.id.nav_specialty) {
+      SpecialtyFragment specialtyFragment = new SpecialtyFragment();
+      transaction.replace(R.id.container1, specialtyFragment).addToBackStack("home").commit();
+    } else {
 
-    } else if (id == R.id.nav_slideshow) {
-
-    } else if (id == R.id.nav_manage) {
-
-    } else if (id == R.id.nav_share) {
-
-    } else if (id == R.id.nav_send) {
-
+      Bundle bundle = new Bundle();
+      FavoritesFragment frag = new FavoritesFragment();
+      switch (item.getItemId()) {
+        case R.id.nav_camera:
+          bundle.putString(FavoritesFragment.TEXT_ARG_KEY, "Camera");
+          break;
+        case R.id.nav_gallery:
+          bundle.putString(FavoritesFragment.TEXT_ARG_KEY, "Gallery");
+          bundle.putInt(FavoritesFragment.COLOR_ARG_KEY, Color.DKGRAY);
+          break;
+        case R.id.nav_slideshow:
+          bundle.putString(FavoritesFragment.TEXT_ARG_KEY, "Awesome Slide Show");
+          bundle.putInt(FavoritesFragment.COLOR_ARG_KEY, Color.WHITE);
+          break;
+        case R.id.nav_manage:
+          bundle.putString(FavoritesFragment.TEXT_ARG_KEY, "Do management stuff");
+          bundle.putInt(FavoritesFragment.COLOR_ARG_KEY, Color.MAGENTA);
+          break;
+      }
+      frag.setArguments(bundle);
+      getSupportFragmentManager().beginTransaction().replace(R.id.container1, frag).commit();
     }
 
-    DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-    drawer.closeDrawer(GravityCompat.START);
+      DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+      drawer.closeDrawer(GravityCompat.START);
+
+
+
+
     return true;
   }
 }
+
+
+
+

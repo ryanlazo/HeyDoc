@@ -11,59 +11,11 @@
   android:paddingTop="20dp"
   android:background="@color/colorAccent">
 
-  <TextView
-    android:id="@+id/username"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="Hey, Ryan!"
-    android:textSize="40sp"
-    android:textStyle="bold"
-    android:textColor="@color/Text"
-    app:layout_constraintLeft_toLeftOf="parent"
-    app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintTop_toTopOf="parent"/>
+  <FrameLayout
+    android:id="@+id/container1"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="1"/>
 
-  <ImageView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:src="@drawable/userpic"
-    app:layout_constraintTop_toBottomOf="@+id/username"
-    app:layout_constraintRight_toRightOf="parent"
-    app:layout_constraintLeft_toLeftOf="parent"
-    />
-
-  <TextView
-    android:id="@+id/scheduled"
-  android:layout_width="wrap_content"
-  android:layout_height="wrap_content"
-  android:text="Your Scheduled Appointments!"
-  android:textSize="20sp"
-  android:textAlignment="center"
-  app:layout_constraintBottom_toBottomOf="parent"
-  app:layout_constraintTop_toBottomOf="parent"
-  app:layout_constraintLeft_toLeftOf="parent"/>
-
-  <ListView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
-
-  </ListView>
-
-
-  <TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="Your Cancelled Appointments!"
-    android:textSize="20sp"
-    android:textAlignment="center"
-    app:layout_constraintBottom_toBottomOf="@id/scheduled"
-    app:layout_constraintTop_toBottomOf="parent"
-    app:layout_constraintLeft_toLeftOf="parent"/>
-
-  <ListView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content">
-
-  </ListView>
 
 </android.support.constraint.ConstraintLayout>
