@@ -17,11 +17,8 @@ public class Practitioner {
     @ColumnInfo(name = "firstName")
     private String firstName;
 
-    @ColumnInfo(name = "scheduleAppointments")
-    private String scheduledAppointments;
-
-    @ColumnInfo(name = "cancelledAppointments")
-    private String cancelledAppointments;
+    @ColumnInfo(name = "Location")
+    private String location;
 
 
 }
