@@ -3,22 +3,28 @@ package edu.cnm.deepdive.heydoc.models;
 
 import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.ForeignKey;
 import android.arch.persistence.room.PrimaryKey;
 
-@Entity
+@Entity(foreignKeys = @ForeignKey(entity = Specialty.class,
+    parentColumns = "id", childColumns = "specialty_Id"))
 public class Practitioner {
 
-    @PrimaryKey(autoGenerate = true)
-    private long id;
+  @PrimaryKey(autoGenerate = true)
+  private long id;
 
-    @ColumnInfo(name = "lastName")
-    private String lastName;
+  @ColumnInfo(name = "lastName")
+  private String lastName;
 
-    @ColumnInfo(name = "firstName")
-    private String firstName;
+  @ColumnInfo(name = "firstName")
+  private String firstName;
 
-    @ColumnInfo(name = "Location")
-    private String location;
+  @ColumnInfo(name = "Location")
+  private String location;
+
+  @ColumnInfo(name = "specialty_id")
+  private long specialtyId;
+
 
   public long getId() {
     return id;
