@@ -9,9 +9,24 @@ import android.arch.persistence.room.PrimaryKey;
 public class Specialty {
 
     @PrimaryKey(autoGenerate = true)
-    private int id;
+    private long id;
 
     @ColumnInfo(name = "specialtyName")
     private String specialtyName;
 
+  public long getId() {
+    return id;
+  }
+
+  public void setId(long id) {
+    this.id = id;
+  }
+
+  public String getSpecialtyName() {
+    return specialtyName;
+  }
+
+  public void setSpecialtyName(String specialtyName) {
+    this.specialtyName = specialtyName;
+  }
 }
