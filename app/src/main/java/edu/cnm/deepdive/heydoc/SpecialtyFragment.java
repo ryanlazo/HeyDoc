@@ -5,6 +5,8 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import edu.cnm.deepdive.heydoc.models.Specialty;
@@ -45,6 +47,15 @@ public class SpecialtyFragment extends Fragment {
         });
       }
     }).start();
+
+    specialty = view.findViewById(R.id.Specialty);
+    specialty.setOnItemClickListener(new OnItemClickListener() {
+      @Override
+      public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+
+      }
+    });
 
     return view;
   }

@@ -5,4 +5,7 @@
   <color name="colorAccent">#f6f9f8</color>
   <color name="Text">#000000</color>
   <color name="Specialty">#fdf2d345</color>
+  <color name="background_color">#19e4efec</color>
+  <color name="border_color">#fdc7cecc</color>
+
 </resources>

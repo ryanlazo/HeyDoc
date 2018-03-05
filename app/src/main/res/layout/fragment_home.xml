@@ -23,17 +23,19 @@ app:layout_constraintTop_toBottomOf="@+id/username"
 app:layout_constraintRight_toRightOf="parent"
 app:layout_constraintLeft_toLeftOf="parent"/>
 
-<TextView
-android:id="@+id/scheduled"
-android:layout_width="wrap_content"
-android:layout_height="wrap_content"
-android:text="Your Scheduled Appointments!"
-android:textSize="20sp"
-android:textAlignment="center"
-  android:paddingTop="200dp"
-app:layout_constraintBottom_toTopOf="@+id/cancelled"
-app:layout_constraintTop_toBottomOf="parent"
-app:layout_constraintLeft_toLeftOf="parent"/>
+  <TextView
+    android:id="@+id/scheduled"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Your Scheduled Appointments!"
+    android:textAlignment="center"
+    android:textSize="20sp"
+    android:textColor="@color/colorPrimary"
+
+    android:paddingTop="200dp"
+    app:layout_constraintBottom_toTopOf="@+id/cancelled"
+    app:layout_constraintTop_toBottomOf="parent"
+    app:layout_constraintLeft_toLeftOf="parent"/>
 
 <ListView
 android:layout_width="wrap_content"
@@ -44,15 +46,17 @@ android:layout_height="wrap_content">
 
 <TextView
   android:id="@+id/cancelled"
-android:layout_width="wrap_content"
-android:layout_height="wrap_content"
-android:text="Your Cancelled Appointments!"
-android:textSize="20sp"
-android:textAlignment="center"
+  android:layout_width="wrap_content"
+  android:layout_height="wrap_content"
+  android:text="Your Cancelled Appointments!"
+  android:textAlignment="center"
+  android:textSize="20sp"
+  android:textColor="@color/colorPrimary"
+
   android:paddingTop="150dp"
-app:layout_constraintBottom_toBottomOf="parent"
-app:layout_constraintTop_toBottomOf="@id/scheduled"
-app:layout_constraintLeft_toLeftOf="parent"/>
+  app:layout_constraintBottom_toBottomOf="parent"
+  app:layout_constraintTop_toBottomOf="@id/scheduled"
+  app:layout_constraintLeft_toLeftOf="parent"/>
 
 <ListView
 android:layout_width="wrap_content"

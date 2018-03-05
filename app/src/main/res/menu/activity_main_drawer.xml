@@ -5,12 +5,12 @@
 
     <item
       android:id="@+id/nav_specialty"
-      android:icon="@drawable/ic_menu_camera"
+      android:icon="@drawable/special"
       android:title="Specialty"/>
 
     <item
       android:id="@+id/nav_favorites"
-      android:icon="@drawable/ic_menu_camera"
+      android:icon="@drawable/fav_doc"
       android:title="Your Docs"/>
 
     <item
@@ -21,10 +21,6 @@
       android:id="@+id/nav_date"
       android:icon="@drawable/ic_menu_gallery"
       android:title="Gallery"/>
-    <item
-      android:id="@+id/nav_slideshow"
-      android:icon="@drawable/ic_menu_slideshow"
-      android:title="Slideshow"/>
     <item
       android:id="@+id/nav_manage"
       android:icon="@drawable/ic_menu_manage"
