@@ -12,11 +12,13 @@ public interface SpecialtyDao {
   @Query("SELECT * FROM Specialty")
   List<Specialty> getAll();
 
-  @Query("SELECT * FROM Specialty WHERE name LIKE :name LIMIT 1")
+  @Query("SELECT * FROM Specialty WHERE specialty_name LIKE :name LIMIT 1")
   Specialty findByName(String name);
 
   @Insert
   long insert(Specialty specialty);
 
+  @Insert
+  void insertAll(Specialty... specialties);
 
 }

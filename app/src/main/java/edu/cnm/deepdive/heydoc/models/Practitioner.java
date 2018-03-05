@@ -7,19 +7,19 @@ import android.arch.persistence.room.ForeignKey;
 import android.arch.persistence.room.PrimaryKey;
 
 @Entity(foreignKeys = @ForeignKey(entity = Specialty.class,
-    parentColumns = "id", childColumns = "specialty_Id"))
+    parentColumns = "id", childColumns = "specialty_id"))
 public class Practitioner {
 
   @PrimaryKey(autoGenerate = true)
   private long id;
 
-  @ColumnInfo(name = "lastName")
+  @ColumnInfo(name = "last_name")
   private String lastName;
 
-  @ColumnInfo(name = "firstName")
+  @ColumnInfo(name = "first_name")
   private String firstName;
 
-  @ColumnInfo(name = "Location")
+  @ColumnInfo(name = "location")
   private String location;
 
   @ColumnInfo(name = "specialty_id")
@@ -56,5 +56,13 @@ public class Practitioner {
 
   public void setLocation(String location) {
     this.location = location;
+  }
+
+  public long getSpecialtyId() {
+    return specialtyId;
+  }
+
+  public void setSpecialtyId(long specialtyId) {
+    this.specialtyId = specialtyId;
   }
 }

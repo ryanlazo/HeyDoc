@@ -1,5 +1,6 @@
 package edu.cnm.deepdive.heydoc;
 
+import android.content.Context;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -18,7 +19,7 @@ import android.view.MenuItem;
 public class MainActivity extends AppCompatActivity
     implements NavigationView.OnNavigationItemSelectedListener {
 
-
+  private static UniDatabase database;
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -26,7 +27,6 @@ public class MainActivity extends AppCompatActivity
     setContentView(R.layout.activity_main);
     Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
     setSupportActionBar(toolbar);
-
 
     FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
     fab.setOnClickListener(new View.OnClickListener() {
@@ -116,28 +116,19 @@ public class MainActivity extends AppCompatActivity
       getSupportFragmentManager().beginTransaction().replace(R.id.container1, frag).commit();
     }
 
-      DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-      drawer.closeDrawer(GravityCompat.START);
+    DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+    drawer.closeDrawer(GravityCompat.START);
 
-      return true;
+    return true;
   }
 
+  public UniDatabase getDatabase(Context context) {
+    if (database == null) {
+      database = UniDatabase.getInstance(context);
+    }
+    return database;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  }
 }
 
 

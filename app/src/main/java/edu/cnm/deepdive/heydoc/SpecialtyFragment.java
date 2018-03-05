@@ -7,8 +7,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import edu.cnm.deepdive.heydoc.models.Specialty;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 
 /**
@@ -20,24 +22,33 @@ public class SpecialtyFragment extends Fragment {
   private ArrayAdapter listAdapter;
 
   public SpecialtyFragment() {
-    // Required empty public constructor
+
   }
 
 
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
       Bundle savedInstanceState) {
-    // Inflate the layout for this fragment
-    View view = inflater.inflate(R.layout.fragment_specialty, container, false);
+    final View view = inflater.inflate(R.layout.fragment_specialty, container, false);
 
-    specialty = view.findViewById(R.id.Specialty);
-    String[] specialtyArray = {"Allergy", "Chiropractic", "Dentist", "Dermatologist"};
-    ArrayList<String> fieldsList = new ArrayList<>();
-    fieldsList.addAll(Arrays.asList(specialtyArray));
-    listAdapter = new ArrayAdapter<String>(getActivity(), R.layout.specialty_list_item, fieldsList);
-    specialty.setAdapter(listAdapter);
+    new Thread(new Runnable() {
+      @Override
+      public void run() {
+
+        List<Specialty> records = UniDatabase.getInstance(getContext()).specialtyDao().getAll();
+        final ArrayAdapter<Specialty> adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, records);
+        getActivity().runOnUiThread(new Runnable() {
+          @Override
+          public void run() {
+            ((ListView) view).setAdapter(adapter);
+          }
+        });
+      }
+    }).start();
 
     return view;
   }
 
-}
+
+  }
+

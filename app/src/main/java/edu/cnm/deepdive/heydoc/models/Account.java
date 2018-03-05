@@ -10,16 +10,16 @@ public class Account {
  @PrimaryKey(autoGenerate = true)
   private long id;
 
- @ColumnInfo(name = "lastName")
+ @ColumnInfo(name = "last_name")
   private String lastName;
 
- @ColumnInfo(name = "firstName")
+ @ColumnInfo(name = "first_name")
   private String firstName;
 
-  @ColumnInfo(name = "scheduleAppointments")
+  @ColumnInfo(name = "schedule_appointments")
   private String scheduledAppointments;
 
-  @ColumnInfo(name = "cancelledAppointments")
+  @ColumnInfo(name = "cancelled_appointments")
   private String cancelledAppointments;
 
   public long getId() {

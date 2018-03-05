@@ -13,7 +13,7 @@ import java.util.List;
     @Query("SELECT * FROM Practitioner")
     List<Practitioner> getAll();
 
-    @Query("SELECT * FROM Practitioner WHERE name LIKE :name LIMIT 1")
+    @Query("SELECT * FROM Practitioner WHERE last_name LIKE :name LIMIT 1")
     Practitioner findByName(String name);
 
     @Insert
