@@ -1,7 +1,5 @@
 package edu.cnm.deepdive.heydoc;
 
-import static android.appwidget.AppWidgetManager.getInstance;
-
 import android.arch.persistence.db.SupportSQLiteDatabase;
 import android.arch.persistence.room.Database;
 import android.arch.persistence.room.Room;
@@ -16,7 +14,7 @@ import edu.cnm.deepdive.heydoc.Dao.ScheduleDao;
 import edu.cnm.deepdive.heydoc.Dao.SpecialtyDao;
 import edu.cnm.deepdive.heydoc.models.Account;
 import edu.cnm.deepdive.heydoc.models.Appointment;
-import edu.cnm.deepdive.heydoc.models.DoctorList;
+import edu.cnm.deepdive.heydoc.models.Doctor;
 import edu.cnm.deepdive.heydoc.models.Practitioner;
 import edu.cnm.deepdive.heydoc.models.Schedule;
 import edu.cnm.deepdive.heydoc.models.Specialty;
@@ -24,7 +22,7 @@ import java.util.concurrent.Executors;
 
 
 @Database(entities = {Account.class, Appointment.class, Practitioner.class,
-Schedule.class, Specialty.class}, version = 1)
+    Schedule.class, Specialty.class}, version = 1)
 public abstract class UniDatabase extends RoomDatabase {
 
   private static UniDatabase INSTANCE;
@@ -34,7 +32,7 @@ public abstract class UniDatabase extends RoomDatabase {
   public abstract PractitionerDao practitionerDao();
   public abstract ScheduleDao scheduleDao();
   public abstract SpecialtyDao specialtyDao();
-  public abstract DoctorListDao doctorListDao();
+
 
   public synchronized static UniDatabase getInstance(Context context) {
     if (INSTANCE == null) {
@@ -55,34 +53,16 @@ public abstract class UniDatabase extends RoomDatabase {
               @Override
               public void run() {
                 getInstance(context).specialtyDao().insertAll(Specialty.populateData());
+                getInstance(context).practitionerDao().insertAll(Practitioner.populateData());
               }
             });
           }
         })
         .build();
   }
-
-  private static UniDatabase buildDatabase(final Context context) {
-    return Room.databaseBuilder(context,
-        UniDatabase.class,
-        "unidatabase")
-        .addCallback(new Callback() {
-          @Override
-          public void onCreate(@NonNull SupportSQLiteDatabase db) {
-            super.onCreate(db);
-            Executors.newSingleThreadScheduledExecutor().execute(new Runnable() {
-              @Override
-              public void run() {
-                getInstance(context).doctorListDao().insertAll(DoctorList.populateData());
-              }
-            });
-          }
-        })
-        .build();
-  }
-
-
-
-
-
 }
+
+
+
+
+

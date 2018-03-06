@@ -13,6 +13,9 @@ public class Practitioner {
   @PrimaryKey(autoGenerate = true)
   private long id;
 
+  @ColumnInfo(name = "practitioner_name")
+  private String practitionerName;
+
   @ColumnInfo(name = "last_name")
   private String lastName;
 
@@ -64,5 +67,37 @@ public class Practitioner {
 
   public void setSpecialtyId(long specialtyId) {
     this.specialtyId = specialtyId;
+  }
+
+
+  public Practitioner(String practitionerName) {
+    this.practitionerName = practitionerName;
+  }
+
+  public String getPractitionerName() {
+    return practitionerName;
+  }
+
+  public void setPractitionerName(String practitionerName) {
+    this.practitionerName = practitionerName;
+  }
+
+  public static Practitioner[] populateData() {
+    return new Practitioner[] {
+        new Practitioner("Henry, Kyle"),
+        new Practitioner("Cardiology"),
+        new Practitioner("Chiropractic"),
+        new Practitioner("Dermatology"),
+        new Practitioner("Dentistry"),
+        new Practitioner("ENT"),
+        new Practitioner("Endocrinology"),
+        new Practitioner("Gastroenterology"),
+
+    };
+  }
+
+  @Override
+  public String toString() {
+    return practitionerName;
   }
 }

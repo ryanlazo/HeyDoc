@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -89,19 +90,16 @@ public class MainActivity extends AppCompatActivity
   @Override
   public boolean onNavigationItemSelected(MenuItem item) {
 
-    FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 
     int id = item.getItemId();
 
     if (id == R.id.nav_date) {
-      DateTimeFragment specialtyFragment = new DateTimeFragment();
-      transaction.replace(R.id.container1, specialtyFragment).addToBackStack("home").commit();
+      loadFragment(new DateTimeFragment(), null);
     } else if (id == R.id.nav_specialty) {
-      SpecialtyFragment specialtyFragment = new SpecialtyFragment();
-      transaction.replace(R.id.container1, specialtyFragment).addToBackStack("home").commit();
-    } else if (id == R.id.doctorList){
-      DoctorListFragment doctorListFragment = new DoctorListFragment();
-      transaction.replace(R.id.container1, doctorListFragment).addToBackStack("home").commit();
+      loadFragment(new SpecialtyFragment(), null);
+    } else if (id == R.id.doctor){
+      loadFragment(new PractitionerListFragment(), null);
+
     }
 
 
@@ -134,6 +132,13 @@ public class MainActivity extends AppCompatActivity
     }
     return database;
 
+  }
+
+  public void loadFragment(Fragment fragment, Bundle bundle) {
+    if (bundle != null) {
+      fragment.setArguments(bundle);
+    }
+    getSupportFragmentManager().beginTransaction().replace(R.id.container1,fragment).addToBackStack("home").commit();
   }
 }
 

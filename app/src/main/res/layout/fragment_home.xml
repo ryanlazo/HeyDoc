@@ -30,7 +30,7 @@ app:layout_constraintLeft_toLeftOf="parent"/>
     android:text="Your Scheduled Appointments!"
     android:textAlignment="center"
     android:textSize="15sp"
-    android:textColor="@color/colorPrimary"
+    android:textColor="@color/colorPrimaryDark"
     android:paddingTop="250dp"
     app:layout_constraintBottom_toTopOf="@+id/cancelled"
     app:layout_constraintTop_toBottomOf="parent"
@@ -50,7 +50,7 @@ android:layout_height="wrap_content">
   android:text="Your Cancelled Appointments!"
   android:textAlignment="center"
   android:textSize="15sp"
-  android:textColor="@color/colorPrimary"
+  android:textColor="@color/colorPrimaryDark"
 
   android:paddingTop="150dp"
   app:layout_constraintBottom_toBottomOf="parent"

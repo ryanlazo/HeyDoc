@@ -51,9 +51,12 @@ public class SpecialtyFragment extends Fragment {
     specialty = view.findViewById(R.id.Specialty);
     specialty.setOnItemClickListener(new OnItemClickListener() {
       @Override
-      public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-
-
+      public void onItemClick(AdapterView parent, View view, int position, long id) {
+        Specialty specialty = (Specialty) parent.getItemAtPosition(position);
+        long specialtyId = specialty.getId();
+        Bundle bundle = new Bundle();
+        bundle.putLong(PractitionerListFragment.SPECIALTY_ID_KEY, specialtyId);
+        ((MainActivity) getActivity()).loadFragment(new PractitionerListFragment(), bundle);
       }
     });
 

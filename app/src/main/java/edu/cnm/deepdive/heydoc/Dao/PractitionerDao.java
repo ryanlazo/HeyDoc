@@ -16,8 +16,16 @@ import java.util.List;
     @Query("SELECT * FROM Practitioner WHERE last_name LIKE :name LIMIT 1")
     Practitioner findByName(String name);
 
+    @Query("SELECT * FROM Practitioner WHERE id = :id")
+    Practitioner getById (long id);
+
+    @Query("SELECT * FROM Practitioner WHERE specialty_id = :specialtyId")
+    List <Practitioner> findBySpecialty (long specialtyId);
+
     @Insert
     long insert(Practitioner practitioner);
+    @Insert
+    long insertAll(Practitioner... practitioner);
 
 
   }
