@@ -62,8 +62,8 @@ public abstract class UniDatabase extends RoomDatabase {
         .build();
   }
 
-  private static UniDatabase buildDatabase(final Context context1) {
-    return Room.databaseBuilder(context1,
+  private static UniDatabase buildDatabase(final Context context) {
+    return Room.databaseBuilder(context,
         UniDatabase.class,
         "unidatabase")
         .addCallback(new Callback() {
@@ -73,7 +73,7 @@ public abstract class UniDatabase extends RoomDatabase {
             Executors.newSingleThreadScheduledExecutor().execute(new Runnable() {
               @Override
               public void run() {
-                getInstance(context1).doctorListDao().insertAll(DoctorList.populateData());
+                getInstance(context).doctorListDao().insertAll(DoctorList.populateData());
               }
             });
           }

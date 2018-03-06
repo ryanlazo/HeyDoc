@@ -99,7 +99,7 @@ public class MainActivity extends AppCompatActivity
     } else if (id == R.id.nav_specialty) {
       SpecialtyFragment specialtyFragment = new SpecialtyFragment();
       transaction.replace(R.id.container1, specialtyFragment).addToBackStack("home").commit();
-    } {
+    } else if (id == R.id.doctorList){
       DoctorListFragment doctorListFragment = new DoctorListFragment();
       transaction.replace(R.id.container1, doctorListFragment).addToBackStack("home").commit();
     }
