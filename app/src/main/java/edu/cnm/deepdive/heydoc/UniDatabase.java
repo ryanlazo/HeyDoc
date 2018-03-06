@@ -24,7 +24,7 @@ import java.util.concurrent.Executors;
 
 
 @Database(entities = {Account.class, Appointment.class, Practitioner.class,
-Schedule.class, Specialty.class}, version = 1)
+Schedule.class, Specialty.class, DoctorList.class}, version = 1)
 public abstract class UniDatabase extends RoomDatabase {
 
   private static UniDatabase INSTANCE;
@@ -61,28 +61,4 @@ public abstract class UniDatabase extends RoomDatabase {
         })
         .build();
   }
-
-  private static UniDatabase buildDatabase(final Context context) {
-    return Room.databaseBuilder(context,
-        UniDatabase.class,
-        "unidatabase")
-        .addCallback(new Callback() {
-          @Override
-          public void onCreate(@NonNull SupportSQLiteDatabase db) {
-            super.onCreate(db);
-            Executors.newSingleThreadScheduledExecutor().execute(new Runnable() {
-              @Override
-              public void run() {
-                getInstance(context).doctorListDao().insertAll(DoctorList.populateData());
-              }
-            });
-          }
-        })
-        .build();
-  }
-
-
-
-
-
 }

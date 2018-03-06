@@ -10,15 +10,15 @@ public class DoctorList {
   @PrimaryKey(autoGenerate = true)
   private long id;
 
-  @ColumnInfo(name = "doctorList_name")
-  private String doctorListName;
+  @ColumnInfo(name = "doctor_name")
+  private String doctorName;
 
   public DoctorList() {
 
   }
 
-  public DoctorList(String doctorListName) {
-    this.doctorListName = doctorListName;
+  public DoctorList(String doctorName) {
+    this.doctorName = doctorName;
   }
 
   public long getId() {
@@ -29,12 +29,12 @@ public class DoctorList {
     this.id = id;
   }
 
-  public String getDoctorListName() {
-    return doctorListName;
+  public String getDoctorName() {
+    return doctorName;
   }
 
-  public void setDoctorListName(String doctorListName) {
-    this.doctorListName = doctorListName;
+  public void setDoctorName(String doctorName) {
+    this.doctorName = doctorName;
   }
 
   public static DoctorList[] populateData() {
@@ -46,7 +46,7 @@ public class DoctorList {
 
   @Override
   public String toString() {
-    return doctorListName;
+    return doctorName;
   }
 }
 
