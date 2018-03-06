@@ -10,11 +10,13 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import edu.cnm.deepdive.heydoc.Dao.AccountDao;
 import edu.cnm.deepdive.heydoc.Dao.AppointmentDao;
+import edu.cnm.deepdive.heydoc.Dao.DoctorListDao;
 import edu.cnm.deepdive.heydoc.Dao.PractitionerDao;
 import edu.cnm.deepdive.heydoc.Dao.ScheduleDao;
 import edu.cnm.deepdive.heydoc.Dao.SpecialtyDao;
 import edu.cnm.deepdive.heydoc.models.Account;
 import edu.cnm.deepdive.heydoc.models.Appointment;
+import edu.cnm.deepdive.heydoc.models.DoctorList;
 import edu.cnm.deepdive.heydoc.models.Practitioner;
 import edu.cnm.deepdive.heydoc.models.Schedule;
 import edu.cnm.deepdive.heydoc.models.Specialty;
@@ -32,6 +34,7 @@ public abstract class UniDatabase extends RoomDatabase {
   public abstract PractitionerDao practitionerDao();
   public abstract ScheduleDao scheduleDao();
   public abstract SpecialtyDao specialtyDao();
+  public abstract DoctorListDao doctorListDao();
 
   public synchronized static UniDatabase getInstance(Context context) {
     if (INSTANCE == null) {
@@ -58,5 +61,28 @@ public abstract class UniDatabase extends RoomDatabase {
         })
         .build();
   }
+
+  private static UniDatabase buildDatabase(final Context context1) {
+    return Room.databaseBuilder(context1,
+        UniDatabase.class,
+        "unidatabase")
+        .addCallback(new Callback() {
+          @Override
+          public void onCreate(@NonNull SupportSQLiteDatabase db) {
+            super.onCreate(db);
+            Executors.newSingleThreadScheduledExecutor().execute(new Runnable() {
+              @Override
+              public void run() {
+                getInstance(context1).doctorListDao().insertAll(DoctorList.populateData());
+              }
+            });
+          }
+        })
+        .build();
+  }
+
+
+
+
 
 }
