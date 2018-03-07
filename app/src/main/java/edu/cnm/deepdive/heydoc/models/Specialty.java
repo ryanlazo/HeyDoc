@@ -31,11 +31,13 @@ public class Specialty {
   }
 
   public String getSpecialtyName() {
-    return specialtyName;
+
+      return specialtyName;
   }
 
   public void setSpecialtyName(String specialtyName) {
-    this.specialtyName = specialtyName;
+
+      this.specialtyName = specialtyName;
   }
 
   public static Specialty[] populateData() {

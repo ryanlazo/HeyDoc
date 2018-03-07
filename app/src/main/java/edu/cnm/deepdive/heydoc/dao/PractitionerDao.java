@@ -24,6 +24,7 @@ import java.util.List;
 
     @Insert
     long insert(Practitioner practitioner);
+
     @Insert
     void insertAll(Practitioner... practitioner);
 

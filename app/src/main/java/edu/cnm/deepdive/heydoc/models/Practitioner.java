@@ -10,6 +10,15 @@ import android.arch.persistence.room.PrimaryKey;
     parentColumns = "id", childColumns = "specialty_id"))
 public class Practitioner {
 
+  public Practitioner() {
+
+  }
+
+  public Practitioner(String practitionerName, long specialtyId) {
+    this.specialtyId = specialtyId;
+    this.practitionerName = practitionerName;
+  }
+
   @PrimaryKey(autoGenerate = true)
   private long id;
 
@@ -66,17 +75,12 @@ public class Practitioner {
   }
 
   public void setSpecialtyId(long specialtyId) {
+
     this.specialtyId = specialtyId;
   }
 
 
-  public Practitioner() {
 
-  }
-
-  public Practitioner(String practitionerName) {
-    this.practitionerName = practitionerName;
-  }
 
   public String getPractitionerName() {
     return practitionerName;
@@ -88,14 +92,32 @@ public class Practitioner {
 
   public static Practitioner[] populateData() {
     return new Practitioner[] {
-        new Practitioner("Henry, Kyle"),
-        new Practitioner("Cardiology"),
-        new Practitioner("Chiropractic"),
-        new Practitioner("Dermatology"),
-        new Practitioner("Dentistry"),
-        new Practitioner("ENT"),
-        new Practitioner("Endocrinology"),
-        new Practitioner("Gastroenterology"),
+        new Practitioner("Abernathy, Katherine", 1),
+        new Practitioner("Clayton, Michael", 1),
+        new Practitioner("Feldman, Bruce", 1),
+        new Practitioner("Honsinger, Richard", 1),
+        new Practitioner("Jenkins, Teresa", 1),
+        new Practitioner("Keslin, Michael", 1),
+        new Practitioner("Rosandich, Ronald", 1),
+        new Practitioner("Tolber, Steven", 1),
+
+        new Practitioner("Allan, Grant", 5),
+        new Practitioner("Anderson, Steven", 5),
+        new Practitioner("Chodosh, David", 5),
+        new Practitioner("Gomez, Terry", 5),
+        new Practitioner("Haight, Michael", 5),
+        new Practitioner("Henry, Kyle", 5),
+        new Practitioner("Jaime, Lillian", 5),
+        new Practitioner("Ku, James", 5),
+        new Practitioner("Lee, Monique", 5),
+        new Practitioner("Lines, Derek", 5),
+        new Practitioner("LoPour, Greg", 5),
+        new Practitioner("Mink, Kevin", 5),
+        new Practitioner("Newsome, Boyd", 5),
+        new Practitioner("Onuora, Obiajulu", 5),
+        new Practitioner("Rogers, Jacob", 5),
+        new Practitioner("Sanchez, Gary", 5),
+        new Practitioner("Sanchez, Greg", 5),
 
     };
   }
