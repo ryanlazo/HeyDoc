@@ -10,13 +10,13 @@ import android.content.Context;
 import android.support.annotation.NonNull;
 import edu.cnm.deepdive.heydoc.Dao.AccountDao;
 import edu.cnm.deepdive.heydoc.Dao.AppointmentDao;
-import edu.cnm.deepdive.heydoc.Dao.DoctorListDao;
+
 import edu.cnm.deepdive.heydoc.Dao.PractitionerDao;
 import edu.cnm.deepdive.heydoc.Dao.ScheduleDao;
 import edu.cnm.deepdive.heydoc.Dao.SpecialtyDao;
 import edu.cnm.deepdive.heydoc.models.Account;
 import edu.cnm.deepdive.heydoc.models.Appointment;
-import edu.cnm.deepdive.heydoc.models.DoctorList;
+
 import edu.cnm.deepdive.heydoc.models.Practitioner;
 import edu.cnm.deepdive.heydoc.models.Schedule;
 import edu.cnm.deepdive.heydoc.models.Specialty;

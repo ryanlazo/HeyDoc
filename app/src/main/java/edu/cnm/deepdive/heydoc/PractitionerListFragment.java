@@ -21,6 +21,7 @@ import java.util.List;
 public class PractitionerListFragment extends Fragment {
 
   public static final String SPECIALTY_ID_KEY = "specialty_id_key";
+  private ListView practitioner;
 
 
   public PractitionerListFragment() {
@@ -32,9 +33,10 @@ public class PractitionerListFragment extends Fragment {
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
       Bundle savedInstanceState) {
     // Inflate the layout for this fragment
-    final View view = inflater.inflate(R.layout.fragment_doctor_list, container, false);
+    final View view = inflater.inflate(R.layout.fragment_practitioner_list, container, false);
     final Bundle args = getArguments();
     final long specialtyId = (args != null) ? args.getLong(SPECIALTY_ID_KEY, 0) : 0;
+    practitioner = view.findViewById(R.id.practitioner_list);
 
 
 
@@ -49,7 +51,7 @@ public class PractitionerListFragment extends Fragment {
         getActivity().runOnUiThread(new Runnable() {
           @Override
           public void run() {
-            ((ListView) view).setAdapter(adapter);
+            practitioner.setAdapter(adapter);
           }
         });
       }

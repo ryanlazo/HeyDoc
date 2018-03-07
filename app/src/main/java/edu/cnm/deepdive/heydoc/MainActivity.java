@@ -96,12 +96,12 @@ public class MainActivity extends AppCompatActivity
     if (id == R.id.nav_date) {
       loadFragment(new DateTimeFragment(), null);
     } else if (id == R.id.nav_specialty) {
-      loadFragment(new SpecialtyFragment(), null);
-    } else if (id == R.id.doctor){
-      loadFragment(new PractitionerListFragment(), null);
-
-    }
-
+      loadFragment(new SpecialtyFragment(), null);}
+//    } else if (id == R.id.){
+//      loadFragment(new PractitionerListFragment(), null);
+//
+//    }
+//
 
     else {
 
