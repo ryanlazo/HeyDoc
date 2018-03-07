@@ -3,6 +3,7 @@ package edu.cnm.deepdive.heydoc;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -36,7 +37,7 @@ public class PractitionerListFragment extends Fragment {
     final View view = inflater.inflate(R.layout.fragment_practitioner_list, container, false);
     final Bundle args = getArguments();
     final long specialtyId = (args != null) ? args.getLong(SPECIALTY_ID_KEY, 0) : 0;
-    practitioner = view.findViewById(R.id.practitioner_list);
+
 
 
 
@@ -57,6 +58,21 @@ public class PractitionerListFragment extends Fragment {
       }
     }).start();
 
+    practitioner = view.findViewById(R.id.practitioner_list);
+    practitioner.setOnItemClickListener(new OnItemClickListener() {
+      @Override
+      public void onItemClick(AdapterView parent, View view, int position, long id) {
+//        Practitioner practitioner = (Practitioner) parent.getItemAtPosition(position);
+//        long specialtyId = practitioner.getId();
+//        Bundle bundle = new Bundle();
+//        bundle.putLong(ProfileFragment.SPECIALTY_ID_KEY, specialtyId);
+//        ((MainActivity) getActivity()).loadFragment(new PractitionerListFragment(), bundle);
+        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+        ProfileFragment profileFragment = new ProfileFragment();
+        transaction.replace(R.id.container1, profileFragment).addToBackStack("home").commit();
+
+      }
+    });
 //     = view.findViewById(R.id.d);
 //    specialty.setOnItemClickListener(new OnItemClickListener() {
 //      @Override

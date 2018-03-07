@@ -2,6 +2,7 @@ package edu.cnm.deepdive.heydoc;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -57,6 +58,7 @@ public class SpecialtyFragment extends Fragment {
         Bundle bundle = new Bundle();
         bundle.putLong(PractitionerListFragment.SPECIALTY_ID_KEY, specialtyId);
         ((MainActivity) getActivity()).loadFragment(new PractitionerListFragment(), bundle);
+
       }
     });
 

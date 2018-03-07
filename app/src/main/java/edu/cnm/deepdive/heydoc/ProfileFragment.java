@@ -34,9 +34,10 @@ public class ProfileFragment extends Fragment {
       Bundle savedInstanceState) {
     // Inflate the layout for this fragment
     final View view = inflater.inflate(R.layout.fragment_profile, container, false);
-    final Bundle args = getArguments();
-    final long specialtyId = (args != null) ? args.getLong(SPECIALTY_ID_KEY, 0) : 0;
-    profile = view.findViewById(R.id.practitioner_list);
+
+
+
+
 
 
 
