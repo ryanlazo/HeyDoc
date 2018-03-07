@@ -1,4 +1,4 @@
-package edu.cnm.deepdive.heydoc.Dao;
+package edu.cnm.deepdive.heydoc.dao;
 
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Insert;
@@ -25,7 +25,7 @@ import java.util.List;
     @Insert
     long insert(Practitioner practitioner);
     @Insert
-    long insertAll(Practitioner... practitioner);
+    void insertAll(Practitioner... practitioner);
 
 
   }

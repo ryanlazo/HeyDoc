@@ -70,6 +70,10 @@ public class Practitioner {
   }
 
 
+  public Practitioner() {
+
+  }
+
   public Practitioner(String practitionerName) {
     this.practitionerName = practitionerName;
   }

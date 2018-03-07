@@ -1,4 +1,4 @@
-package edu.cnm.deepdive.heydoc.Dao;
+package edu.cnm.deepdive.heydoc.dao;
 
 import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Insert;

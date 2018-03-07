@@ -1,19 +1,17 @@
 package edu.cnm.deepdive.heydoc;
 
-import static android.appwidget.AppWidgetManager.getInstance;
-
 import android.arch.persistence.db.SupportSQLiteDatabase;
 import android.arch.persistence.room.Database;
 import android.arch.persistence.room.Room;
 import android.arch.persistence.room.RoomDatabase;
 import android.content.Context;
 import android.support.annotation.NonNull;
-import edu.cnm.deepdive.heydoc.Dao.AccountDao;
-import edu.cnm.deepdive.heydoc.Dao.AppointmentDao;
+import edu.cnm.deepdive.heydoc.dao.AccountDao;
+import edu.cnm.deepdive.heydoc.dao.AppointmentDao;
 
-import edu.cnm.deepdive.heydoc.Dao.PractitionerDao;
-import edu.cnm.deepdive.heydoc.Dao.ScheduleDao;
-import edu.cnm.deepdive.heydoc.Dao.SpecialtyDao;
+import edu.cnm.deepdive.heydoc.dao.PractitionerDao;
+import edu.cnm.deepdive.heydoc.dao.ScheduleDao;
+import edu.cnm.deepdive.heydoc.dao.SpecialtyDao;
 import edu.cnm.deepdive.heydoc.models.Account;
 import edu.cnm.deepdive.heydoc.models.Appointment;
 
