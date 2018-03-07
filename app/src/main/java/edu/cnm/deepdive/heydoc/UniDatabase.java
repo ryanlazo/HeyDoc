@@ -1,5 +1,7 @@
 package edu.cnm.deepdive.heydoc;
 
+import static android.appwidget.AppWidgetManager.getInstance;
+
 import android.arch.persistence.db.SupportSQLiteDatabase;
 import android.arch.persistence.room.Database;
 import android.arch.persistence.room.Room;
@@ -14,7 +16,7 @@ import edu.cnm.deepdive.heydoc.Dao.ScheduleDao;
 import edu.cnm.deepdive.heydoc.Dao.SpecialtyDao;
 import edu.cnm.deepdive.heydoc.models.Account;
 import edu.cnm.deepdive.heydoc.models.Appointment;
-import edu.cnm.deepdive.heydoc.models.Doctor;
+import edu.cnm.deepdive.heydoc.models.DoctorList;
 import edu.cnm.deepdive.heydoc.models.Practitioner;
 import edu.cnm.deepdive.heydoc.models.Schedule;
 import edu.cnm.deepdive.heydoc.models.Specialty;
