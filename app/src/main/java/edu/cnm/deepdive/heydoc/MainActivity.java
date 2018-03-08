@@ -1,6 +1,9 @@
 package edu.cnm.deepdive.heydoc;
 
+import static android.provider.AlarmClock.EXTRA_MESSAGE;
+
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -16,6 +19,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity
     implements NavigationView.OnNavigationItemSelectedListener {
@@ -70,6 +74,8 @@ public class MainActivity extends AppCompatActivity
     getMenuInflater().inflate(R.menu.main, menu);
     return true;
   }
+
+
 
   @Override
   public boolean onOptionsItemSelected(MenuItem item) {
