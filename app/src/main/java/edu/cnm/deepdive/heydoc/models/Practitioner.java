@@ -119,6 +119,27 @@ public class Practitioner {
         new Practitioner("Sanchez, Gary", 5),
         new Practitioner("Sanchez, Greg", 5),
 
+        new Practitioner("Bateman, Tim", 3),
+        new Practitioner("Berlin, John", 3),
+        new Practitioner("Blessing, Lindsey", 3),
+        new Practitioner("Blair, Emily", 3),
+        new Practitioner("Blair, Randy", 3),
+        new Practitioner("Cecil, Christopher", 3),
+        new Practitioner("Coogan, Kelly", 3),
+        new Practitioner("Dehoogh, Austin", 3),
+        new Practitioner("Del Angel, Tony", 3),
+        new Practitioner("Emberger, Michelle", 3),
+        new Practitioner("Freeburg, Thomas", 3),
+        new Practitioner("Gardner, Stephen", 3),
+        new Practitioner("Hightower, Beau", 3),
+        new Practitioner("Lovin, Bill", 3),
+        new Practitioner("Manson, Kirk", 3),
+        new Practitioner("Marcus, Rion", 3),
+        new Practitioner("Ramirez, Ruben", 3),
+        new Practitioner("Valenti, Helene", 3),
+        new Practitioner("Vawter, John", 3),
+
+
     };
   }
 
