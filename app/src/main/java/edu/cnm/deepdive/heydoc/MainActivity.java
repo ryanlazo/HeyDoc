@@ -33,15 +33,6 @@ public class MainActivity extends AppCompatActivity
     Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
     setSupportActionBar(toolbar);
 
-    FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-    fab.setOnClickListener(new View.OnClickListener() {
-      @Override
-      public void onClick(View view) {
-        Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-            .setAction("Action", null).show();
-      }
-    });
-
     DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
     ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
         this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
@@ -76,7 +67,6 @@ public class MainActivity extends AppCompatActivity
   }
 
 
-
   @Override
   public boolean onOptionsItemSelected(MenuItem item) {
     // Handle action bar item clicks here. The action bar will
@@ -96,13 +86,13 @@ public class MainActivity extends AppCompatActivity
   @Override
   public boolean onNavigationItemSelected(MenuItem item) {
 
-
     int id = item.getItemId();
 
     if (id == R.id.nav_date) {
       loadFragment(new DateTimeFragment(), null);
     } else if (id == R.id.nav_specialty) {
-      loadFragment(new SpecialtyFragment(), null);}
+      loadFragment(new SpecialtyFragment(), null);
+    }
 //    } else if (id == R.id.){
 //      loadFragment(new PractitionerListFragment(), null);
 //
@@ -114,9 +104,6 @@ public class MainActivity extends AppCompatActivity
       Bundle bundle = new Bundle();
       FavoritesFragment frag = new FavoritesFragment();
       switch (item.getItemId()) {
-        case R.id.nav_camera:
-          bundle.putString(FavoritesFragment.TEXT_ARG_KEY, "Camera");
-          break;
         case R.id.nav_date:
           bundle.putString(FavoritesFragment.TEXT_ARG_KEY, "Gallery");
           bundle.putInt(FavoritesFragment.COLOR_ARG_KEY, Color.DKGRAY);
@@ -144,7 +131,8 @@ public class MainActivity extends AppCompatActivity
     if (bundle != null) {
       fragment.setArguments(bundle);
     }
-    getSupportFragmentManager().beginTransaction().replace(R.id.container1,fragment).addToBackStack("home").commit();
+    getSupportFragmentManager().beginTransaction().replace(R.id.container1, fragment)
+        .addToBackStack("home").commit();
   }
 }
 

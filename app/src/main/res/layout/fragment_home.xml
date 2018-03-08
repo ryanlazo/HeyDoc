@@ -24,7 +24,7 @@ app:layout_constraintRight_toRightOf="parent"
 app:layout_constraintLeft_toLeftOf="parent"/>
 
   <TextView
-    android:id="@+id/scheduled"
+    android:id="@+id/desc"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:text="Your Scheduled Appointments!"
@@ -54,7 +54,7 @@ android:layout_height="wrap_content">
 
   android:paddingTop="150dp"
   app:layout_constraintBottom_toBottomOf="parent"
-  app:layout_constraintTop_toBottomOf="@id/scheduled"
+  app:layout_constraintTop_toBottomOf="@id/desc"
   app:layout_constraintLeft_toLeftOf="parent"/>
 
 <ListView
