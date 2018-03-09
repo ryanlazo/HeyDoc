@@ -5,10 +5,18 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
+import edu.cnm.deepdive.heydoc.models.Appointment;
+import edu.cnm.deepdive.heydoc.models.Practitioner;
+import java.util.List;
 import org.w3c.dom.Text;
 
 
@@ -17,12 +25,7 @@ import org.w3c.dom.Text;
  */
 public class FavoritesFragment extends Fragment {
 
-  // These are the keys that will be used to put and get argument values for instances of this fragment class.
-  public static final String TEXT_ARG_KEY = "replaceable_text";
-  public static final String COLOR_ARG_KEY = "replaceable_color";
-
-  private String replaceableText;
-  private int replaceableColor;
+  private ListView fav;
 
   public FavoritesFragment() {
     // Required empty public constructor
@@ -30,25 +33,38 @@ public class FavoritesFragment extends Fragment {
 
 
   @Override
-  public void onCreate(@Nullable Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    Bundle bundle = getArguments();
-    if (bundle == null) {
-      bundle = new Bundle();
-    }
-    replaceableText = bundle.getString(TEXT_ARG_KEY, "Your Favorite Doctors");
-    replaceableColor = bundle.getInt(COLOR_ARG_KEY, Color.YELLOW);
-  }
-
-  @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
       Bundle savedInstanceState) {
     View view = inflater.inflate(R.layout.fragment_favorites, container, false);
-    view.setBackgroundColor(replaceableColor);
 
-    TextView tv = view.findViewById(R.id.replaceable_text);
-    tv.setText(replaceableText);
+    updateDisplay(view);
+
+    fav.setOnItemClickListener(new OnItemClickListener() {
+      @Override
+      public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+        ProfileFragment profileFragment = new ProfileFragment();
+        transaction.replace(R.id.container1, profileFragment).addToBackStack("home").commit();
+      }
+    });
+
     return view;
   }
 
+  private void updateDisplay(View view) {
+    fav = view.findViewById(R.id.fav_list);
+    new Thread(new Runnable() {
+      @Override
+      public void run() {
+        List<Practitioner> practitioners = UniDatabase.getInstance(getContext()).practitionerDao().getFavorites();
+        final ArrayAdapter<Practitioner> adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, practitioners);
+        getActivity().runOnUiThread(new Runnable() {
+          @Override
+          public void run() {
+            fav.setAdapter(adapter);
+          }
+        });
+      }
+    }).start();
+  }
 }

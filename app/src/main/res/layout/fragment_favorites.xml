@@ -1,16 +1,8 @@
 
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ListView xmlns:android="http://schemas.android.com/apk/res/android"
 xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
 tools:context="edu.cnm.deepdive.heydoc.FavoritesFragment"
-android:background="@color/Specialty">
-
-<!-- TODO: Update blank fragment layout -->
-<TextView
-  android:id="@+id/replaceable_text"
-  android:layout_width="match_parent"
-  android:layout_height="match_parent"
-  android:text="@string/hello_blank_fragment"/>
-
-</FrameLayout>
+android:background="@color/Specialty"
+  android:id="@+id/fav_list"/>
