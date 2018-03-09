@@ -42,7 +42,7 @@ public class ProfileFragment extends Fragment {
       public void onSelectedDayChange(CalendarView view, int year, int month,
           int dayOfMonth) {
         FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
-        AppointmentFragment appointmentFragment = new AppointmentFragment();
+        AppointmentFragment appointmentFragment = AppointmentFragment.newInstance(year, month, dayOfMonth);
         transaction.replace(R.id.container1, appointmentFragment).addToBackStack("home").commit();
       }
     });

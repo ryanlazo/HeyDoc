@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "936526442554ef0bf1590905c49c0984",
+    "identityHash": "57eebfebd1d52b4393e7e4ae46a80e8c",
     "entities": [
       {
         "tableName": "Account",
@@ -50,7 +50,7 @@
       },
       {
         "tableName": "Appointment",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `date` INTEGER, `practitioner_id` INTEGER NOT NULL, FOREIGN KEY(`practitioner_id`) REFERENCES `Practitioner`(`id`) ON UPDATE NO ACTION ON DELETE NO ACTION )",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `date` INTEGER, `duration` INTEGER NOT NULL, `practitioner_id` INTEGER NOT NULL, FOREIGN KEY(`practitioner_id`) REFERENCES `Practitioner`(`id`) ON UPDATE NO ACTION ON DELETE NO ACTION )",
         "fields": [
           {
             "fieldPath": "id",
@@ -63,6 +63,12 @@
             "columnName": "date",
             "affinity": "INTEGER",
             "notNull": false
+          },
+          {
+            "fieldPath": "duration",
+            "columnName": "duration",
+            "affinity": "INTEGER",
+            "notNull": true
           },
           {
             "fieldPath": "practionerId",
@@ -209,7 +215,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"936526442554ef0bf1590905c49c0984\")"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"57eebfebd1d52b4393e7e4ae46a80e8c\")"
     ]
   }
 }

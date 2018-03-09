@@ -28,7 +28,7 @@ public abstract class UniDatabase extends RoomDatabase {
   private static UniDatabase INSTANCE;
 
   public abstract AccountDao accountDao();
-  public abstract AppointmentDao appointmentsDao();
+  public abstract AppointmentDao appointmentDao();
   public abstract PractitionerDao practitionerDao();
   public abstract ScheduleDao scheduleDao();
   public abstract SpecialtyDao specialtyDao();

@@ -20,6 +20,12 @@ public class Appointment {
  @ColumnInfo(name = "date")
   private Date date;
 
+ @ColumnInfo(name = "duration")
+ private int duration;
+
+  @ColumnInfo(name = "practitioner_id")
+  private long practionerId;
+
   public static class Converters {
     @TypeConverter
     public Date fromTimestamp(Long value) {
@@ -44,10 +50,6 @@ public class Appointment {
     this.practionerId = practionerId;
   }
 
-  @ColumnInfo(name = "practitioner_id")
-
-  private long practionerId;
-
   public long getId() {
     return id;
   }
@@ -62,6 +64,19 @@ public class Appointment {
 
   public void setDate(Date date) {
     this.date = date;
+  }
+
+  public int getDuration() {
+    return duration;
+  }
+
+  public void setDuration(int duration) {
+    this.duration = duration;
+  }
+
+  @Override
+  public String toString() {
+    return date + " for " + duration + " minutes";
   }
 }
 

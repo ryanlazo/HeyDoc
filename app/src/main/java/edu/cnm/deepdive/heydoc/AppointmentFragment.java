@@ -5,7 +5,6 @@ import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -14,13 +13,14 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
-import edu.cnm.deepdive.heydoc.DateTimePickerFragment.Mode;
-import edu.cnm.deepdive.heydoc.DateTimePickerFragment.OnChangeListener;
+import edu.cnm.deepdive.heydoc.models.Appointment;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 
@@ -29,16 +29,25 @@ import java.util.List;
  */
 public class AppointmentFragment extends Fragment {
 
-  ListView timeList;
-  private Calendar calendar;
-  private EditText dateControl;
-  private EditText timeControl;
+  private ListView timeList;
   private TextView confirmText;
   private Button yesButton;
   private Button noButton;
+  private ArrayAdapter<ScheduleItem> adapter;
+
+  public static AppointmentFragment newInstance(int year, int month, int day) {
+
+    Bundle args = new Bundle();
+    args.putInt("year", year);
+    args.putInt("month", month);
+    args.putInt("day", day);
+    AppointmentFragment fragment = new AppointmentFragment();
+    fragment.setArguments(args);
+    return fragment;
+  }
 
   public AppointmentFragment() {
-    // Required empty public constructor
+
   }
 
 
@@ -47,18 +56,18 @@ public class AppointmentFragment extends Fragment {
       Bundle savedInstanceState) {
     View view = inflater.inflate(R.layout.fragment_appointment, container, false);
     timeList = view.findViewById(R.id.time_list);
-    List<String> times = new ArrayList<>();
-    String time;
+    List<ScheduleItem> times = new ArrayList<>();
     for (int i = 8; i < 18; i++) {
       for (int j = 0; j < 60; j = j + 15) {
+        ScheduleItem time = new ScheduleItem();
         if (j == 0) {
-          time = String.format("%d:%d0", i, j);
+          time.setTime(String.format("%d:%d0", i, j));
         } else {
-          time = String.format("%d:%d", i, j);
+          time.setTime(String.format("%d:%d", i, j));
         }
         times.add(time);
       }
-      ArrayAdapter<String> adapter = new ArrayAdapter<>(getActivity(),
+      adapter = new TimeListAdapter(getActivity(),
           android.R.layout.simple_list_item_1, times);
       timeList.setAdapter(adapter);
     }
@@ -66,7 +75,7 @@ public class AppointmentFragment extends Fragment {
       @Override
       public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         AppointmentDialog appointmentDialog = new AppointmentDialog();
-        appointmentDialog.appointmentDialog();
+        appointmentDialog.appointmentDialog(position);
       }
     });
     return view;
@@ -74,7 +83,7 @@ public class AppointmentFragment extends Fragment {
 
   private class AppointmentDialog {
 
-    public void appointmentDialog() {
+    public void appointmentDialog(final int position) {
       AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
 
       LayoutInflater inflater = getLayoutInflater();
@@ -92,7 +101,29 @@ public class AppointmentFragment extends Fragment {
       yesButton.setOnClickListener(new OnClickListener() {
         @Override
         public void onClick(View v) {
-
+          adapter.getItem(position).setBooked(true);
+          adapter.notifyDataSetChanged();
+          new Thread(new Runnable() {
+            @Override
+            public void run() {
+              Bundle args = getArguments();
+              Calendar calendar = Calendar.getInstance();
+              calendar.set(args.getInt("year"), args.getInt("month"), args.getInt("day"), 0, 0, 0);
+              SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+              try {
+                Date time = sdf.parse(adapter.getItem(position).getTime());
+                calendar.add(Calendar.MILLISECOND, (int) time.getTime());
+              } catch (ParseException e) {
+                throw new RuntimeException(e);
+              }
+              Appointment appointment = new Appointment();
+              appointment.setDate(calendar.getTime());
+              appointment.setDuration(15);
+              appointment.setPractionerId(1); //TODO CHANGE THIS YOU LAZY ***
+              UniDatabase.getInstance(getContext()).appointmentDao().insert(appointment);
+            }
+          }).start();
+          dialog.dismiss();
         }
       });
 
