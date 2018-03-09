@@ -37,6 +37,17 @@ public class Practitioner {
   @ColumnInfo(name = "specialty_id")
   private long specialtyId;
 
+  @ColumnInfo(name = "is_favorite")
+  private int isFavorite;
+
+
+  public int getIsFavorite() {
+    return isFavorite;
+  }
+
+  public void setIsFavorite(int isFavorite) {
+    this.isFavorite = isFavorite;
+  }
 
   public long getId() {
     return id;

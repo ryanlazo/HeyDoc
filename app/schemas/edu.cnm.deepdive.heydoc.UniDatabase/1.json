@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "57eebfebd1d52b4393e7e4ae46a80e8c",
+    "identityHash": "6d60598f77c7d2763c514ec0d372b221",
     "entities": [
       {
         "tableName": "Account",
@@ -100,7 +100,7 @@
       },
       {
         "tableName": "Practitioner",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `practitioner_name` TEXT, `last_name` TEXT, `first_name` TEXT, `location` TEXT, `specialty_id` INTEGER NOT NULL, FOREIGN KEY(`specialty_id`) REFERENCES `Specialty`(`id`) ON UPDATE NO ACTION ON DELETE NO ACTION )",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `practitioner_name` TEXT, `last_name` TEXT, `first_name` TEXT, `location` TEXT, `specialty_id` INTEGER NOT NULL, `is_favorite` INTEGER NOT NULL, FOREIGN KEY(`specialty_id`) REFERENCES `Specialty`(`id`) ON UPDATE NO ACTION ON DELETE NO ACTION )",
         "fields": [
           {
             "fieldPath": "id",
@@ -135,6 +135,12 @@
           {
             "fieldPath": "specialtyId",
             "columnName": "specialty_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "isFavorite",
+            "columnName": "is_favorite",
             "affinity": "INTEGER",
             "notNull": true
           }
@@ -215,7 +221,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"57eebfebd1d52b4393e7e4ae46a80e8c\")"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"6d60598f77c7d2763c514ec0d372b221\")"
     ]
   }
 }

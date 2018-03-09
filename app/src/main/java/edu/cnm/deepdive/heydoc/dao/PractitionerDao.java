@@ -22,6 +22,9 @@ public interface PractitionerDao {
   @Query("SELECT * FROM Practitioner WHERE specialty_id = :specialtyId")
   List <Practitioner> findBySpecialty (long specialtyId);
 
+  @Query("Select * FROM Practitioner Where is_favorite = 1")
+  List<Practitioner> getFavorites();
+
   @Insert
   long insert(Practitioner practitioner);
 

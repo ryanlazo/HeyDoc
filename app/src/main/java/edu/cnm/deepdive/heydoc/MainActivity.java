@@ -20,6 +20,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
+import edu.cnm.deepdive.heydoc.models.Specialty;
 
 public class MainActivity extends AppCompatActivity
     implements NavigationView.OnNavigationItemSelectedListener {
@@ -86,31 +87,21 @@ public class MainActivity extends AppCompatActivity
   @Override
   public boolean onNavigationItemSelected(MenuItem item) {
 
-    int id = item.getItemId();
+    FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
 
-    if (id == R.id.nav_date) {
-      loadFragment(new DateTimeFragment(), null);
-    } else if (id == R.id.nav_specialty) {
-      loadFragment(new SpecialtyFragment(), null);
-    }
-//    } else if (id == R.id.){
-//      loadFragment(new PractitionerListFragment(), null);
-//
-//    }
-//
-
-    else {
-
-      Bundle bundle = new Bundle();
-      FavoritesFragment frag = new FavoritesFragment();
-      switch (item.getItemId()) {
-        case R.id.nav_date:
-          bundle.putString(FavoritesFragment.TEXT_ARG_KEY, "Gallery");
-          bundle.putInt(FavoritesFragment.COLOR_ARG_KEY, Color.DKGRAY);
-          break;
-      }
-      frag.setArguments(bundle);
-      getSupportFragmentManager().beginTransaction().replace(R.id.container1, frag).commit();
+    switch (item.getItemId()) {
+      case R.id.nav_home:
+        HomeFragment homeFragment = new HomeFragment();
+        transaction.replace(R.id.container1, homeFragment).addToBackStack("home").commit();
+        break;
+      case R.id.nav_specialty:
+        SpecialtyFragment specialtyFragment = new SpecialtyFragment();
+        transaction.replace(R.id.container1, specialtyFragment).addToBackStack("home").commit();
+        break;
+      case R.id.nav_favorites:
+        FavoritesFragment favoritesFragment = new FavoritesFragment();
+        transaction.replace(R.id.container1, favoritesFragment).addToBackStack("home").commit();
+        break;
     }
 
     DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
