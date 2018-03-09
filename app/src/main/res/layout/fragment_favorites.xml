@@ -1,8 +1,10 @@
-
 <ListView xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:tools="http://schemas.android.com/tools"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-tools:context="edu.cnm.deepdive.heydoc.FavoritesFragment"
-android:background="@color/Specialty"
-  android:id="@+id/fav_list"/>
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  tools:context="edu.cnm.deepdive.heydoc.FavoritesFragment"
+  android:background="@color/colorAccent"
+  android:id="@+id/fav_list"
+  android:paddingLeft="10dp"
+  android:paddingRight="10dp"/>

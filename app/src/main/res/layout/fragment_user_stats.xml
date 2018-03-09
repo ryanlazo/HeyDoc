@@ -1,0 +1,46 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:tools="http://schemas.android.com/tools"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent"
+  tools:context="edu.cnm.deepdive.heydoc.UserStatsFragment"
+  android:background="@color/background_color">
+
+
+  <TextView
+    android:id="@+id/last_physical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:text="numbers based on your last physical 10/12/2018"/>
+
+  <TextView
+    android:id="@+id/age"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:text="Age: 30"/>
+  <TextView
+    android:id="@+id/gender"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:text="Gender: Male"/>
+
+  <TextView
+    android:id="@+id/height"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:text="Height: 5'10"/>
+  <TextView
+    android:id="@+id/weight"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:text="Weight: 156.3lbs"/>
+  <TextView
+    android:id="@+id/bp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:text="Blood Pressure: 118/72"/>
+
+
+
+
+
+</FrameLayout>

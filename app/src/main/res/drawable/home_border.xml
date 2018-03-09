@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shape xmlns:android="http://schemas.android.com/apk/res/android"
   android:shape="rectangle"
-  android:layout_height="10dp"
-  android:layout_width="10dp">
+  android:layout_height="20dp"
+  android:layout_width="20dp">
 
   <!-- View background color -->
   <solid
@@ -11,7 +11,7 @@
 
   <!-- View border color and width -->
   <stroke
-    android:width="10dp"
+    android:width="5dp"
     android:color="@color/border_color">
   </stroke>
 

@@ -8,6 +8,7 @@ import android.arch.persistence.room.PrimaryKey;
 
 @Entity(foreignKeys = @ForeignKey(entity = Specialty.class,
     parentColumns = "id", childColumns = "specialty_id"))
+
 public class Profile {
 
   public Profile() {
