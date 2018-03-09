@@ -1,13 +1,13 @@
 package edu.cnm.deepdive.heydoc.dao;
 
-    import static android.arch.persistence.room.OnConflictStrategy.REPLACE;
+import static android.arch.persistence.room.OnConflictStrategy.REPLACE;
 
-    import android.arch.persistence.room.Dao;
-    import android.arch.persistence.room.Insert;
-    import android.arch.persistence.room.Query;
-    import android.arch.persistence.room.Update;
-    import edu.cnm.deepdive.heydoc.models.Practitioner;
-    import java.util.List;
+import android.arch.persistence.room.Dao;
+import android.arch.persistence.room.Insert;
+import android.arch.persistence.room.Query;
+import android.arch.persistence.room.Update;
+import edu.cnm.deepdive.heydoc.models.Practitioner;
+import java.util.List;
 
 
 @Dao
@@ -19,17 +19,14 @@ public interface PractitionerDao {
   @Query("SELECT * FROM Practitioner WHERE id = 14")
   Practitioner findByName();
 
-  @Query("SELECT * FROM Practitioner WHERE id = :id")
-  Practitioner getById (long id);
-
   @Query("SELECT * FROM Practitioner WHERE specialty_id = :specialtyId")
-  List <Practitioner> findBySpecialty (long specialtyId);
+  List<Practitioner> findBySpecialty(long specialtyId);
 
   @Query("Select * FROM Practitioner Where is_favorite = 1")
   List<Practitioner> getFavorites();
 
   @Update(onConflict = REPLACE)
-  int update(Practitioner practitioner);
+  void update(Practitioner practitioner);
 
   @Insert
   long insert(Practitioner practitioner);

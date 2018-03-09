@@ -14,19 +14,20 @@ import java.util.Date;
 @TypeConverters(Converters.class)
 public class Appointment {
 
- @PrimaryKey(autoGenerate = true)
+  @PrimaryKey(autoGenerate = true)
   private long id;
 
- @ColumnInfo(name = "date")
+  @ColumnInfo(name = "date")
   private Date date;
 
- @ColumnInfo(name = "duration")
- private int duration;
+  @ColumnInfo(name = "duration")
+  private int duration;
 
   @ColumnInfo(name = "practitioner_id")
   private long practionerId;
 
   public static class Converters {
+
     @TypeConverter
     public Date fromTimestamp(Long value) {
       return value == null ? null : new Date(value);
@@ -40,14 +41,6 @@ public class Appointment {
         return date.getTime();
       }
     }
-  }
-
-  public long getPractionerId() {
-    return practionerId;
-  }
-
-  public void setPractionerId(long practionerId) {
-    this.practionerId = practionerId;
   }
 
   public long getId() {
@@ -72,6 +65,14 @@ public class Appointment {
 
   public void setDuration(int duration) {
     this.duration = duration;
+  }
+
+  public long getPractionerId() {
+    return practionerId;
+  }
+
+  public void setPractionerId(long practionerId) {
+    this.practionerId = practionerId;
   }
 
   @Override

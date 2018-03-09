@@ -7,13 +7,13 @@ import android.arch.persistence.room.PrimaryKey;
 @Entity
 public class Account {
 
- @PrimaryKey(autoGenerate = true)
+  @PrimaryKey(autoGenerate = true)
   private long id;
 
- @ColumnInfo(name = "last_name")
+  @ColumnInfo(name = "last_name")
   private String lastName;
 
- @ColumnInfo(name = "first_name")
+  @ColumnInfo(name = "first_name")
   private String firstName;
 
   @ColumnInfo(name = "schedule_appointments")
@@ -61,9 +61,5 @@ public class Account {
   public void setCancelledAppointments(String cancelledAppointments) {
     this.cancelledAppointments = cancelledAppointments;
   }
-
-
-
-
 }
 

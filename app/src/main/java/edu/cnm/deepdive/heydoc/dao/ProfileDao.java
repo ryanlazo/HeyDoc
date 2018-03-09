@@ -4,30 +4,18 @@ import android.arch.persistence.room.Dao;
 import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.Query;
 import edu.cnm.deepdive.heydoc.models.Practitioner;
+import edu.cnm.deepdive.heydoc.models.Profile;
 import java.util.List;
 
 
 @Dao
 public interface ProfileDao {
 
-  @Query("SELECT * FROM Practitioner")
+  @Query("SELECT * FROM Profile")
   List<Practitioner> getAll();
 
-  @Query("SELECT * FROM Practitioner WHERE last_name LIKE :name LIMIT 1")
-  Practitioner findByName(String name);
-
-  @Query("SELECT * FROM Practitioner WHERE id = :id")
-  Practitioner getById (long id);
-
-  @Query("SELECT * FROM Practitioner WHERE specialty_id = :specialtyId")
-  List <Practitioner> findBySpecialty (long specialtyId);
-
   @Insert
-  long insert(Practitioner practitioner);
-
-  @Insert
-  void insertAll(Practitioner... practitioner);
-
+  long insert(Profile profile);
 
 }
 

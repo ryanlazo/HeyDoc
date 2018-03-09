@@ -8,19 +8,19 @@ import android.arch.persistence.room.PrimaryKey;
 @Entity
 public class Specialty {
 
-    @PrimaryKey(autoGenerate = true)
-    private long id;
+  @PrimaryKey(autoGenerate = true)
+  private long id;
 
-    @ColumnInfo(name = "specialty_name")
-    private String specialtyName;
+  @ColumnInfo(name = "specialty_name")
+  private String specialtyName;
 
-    public Specialty() {
+  public Specialty() {
 
-    }
+  }
 
-    public Specialty(String specialtyName) {
-      this.specialtyName = specialtyName;
-    }
+  public Specialty(String specialtyName) {
+    this.specialtyName = specialtyName;
+  }
 
   public long getId() {
     return id;
@@ -32,16 +32,16 @@ public class Specialty {
 
   public String getSpecialtyName() {
 
-      return specialtyName;
+    return specialtyName;
   }
 
   public void setSpecialtyName(String specialtyName) {
 
-      this.specialtyName = specialtyName;
+    this.specialtyName = specialtyName;
   }
 
   public static Specialty[] populateData() {
-    return new Specialty[] {
+    return new Specialty[]{
         new Specialty("Allergy"),
         new Specialty("Cardiology"),
         new Specialty("Chiropractic"),

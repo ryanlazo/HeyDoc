@@ -79,9 +79,6 @@ public class Profile {
     this.specialtyId = specialtyId;
   }
 
-
-
-
   public String getPractitionerName() {
     return practitionerName;
   }
@@ -91,7 +88,7 @@ public class Profile {
   }
 
   public static Practitioner[] populateData() {
-    return new Practitioner[] {
+    return new Practitioner[]{
         new Practitioner("Abernathy, Katherine", 1),
 
     };

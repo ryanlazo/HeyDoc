@@ -1,6 +1,5 @@
 package edu.cnm.deepdive.heydoc;
 
-
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.format.DateFormat;
@@ -13,10 +12,6 @@ import edu.cnm.deepdive.heydoc.DateTimePickerFragment.Mode;
 import edu.cnm.deepdive.heydoc.DateTimePickerFragment.OnChangeListener;
 import java.util.Calendar;
 
-
-/**
- * A simple {@link Fragment} subclass.
- */
 public class DateTimeFragment extends Fragment {
 
   private Calendar calendar;
@@ -25,14 +20,12 @@ public class DateTimeFragment extends Fragment {
 
 
   public DateTimeFragment() {
-    // Required empty public constructor
-  }
 
+  }
 
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
       Bundle savedInstanceState) {
-    // Inflate the layout for this fragment
     View view = inflater.inflate(R.layout.fragment_date_time, container, false);
     dateControl = view.findViewById(R.id.date_control);
     timeControl = view.findViewById(R.id.time_control);
@@ -76,8 +69,6 @@ public class DateTimeFragment extends Fragment {
       }
     });
     fragment.show(getFragmentManager(), fragment.getClass().getName());
-
-
   }
 
   private void setupListeners() {
@@ -96,10 +87,6 @@ public class DateTimeFragment extends Fragment {
 
     });
   }
-
-
-
-
 }
 
 

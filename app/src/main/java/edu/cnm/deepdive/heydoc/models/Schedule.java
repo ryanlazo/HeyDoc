@@ -19,6 +19,7 @@ public class Schedule {
   private Date date;
 
   public static class Converters {
+
     @TypeConverter
     public Date fromTimestamp(Long value) {
       return value == null ? null : new Date(value);
@@ -33,8 +34,6 @@ public class Schedule {
       }
     }
   }
-
-
 
   public long getId() {
     return id;

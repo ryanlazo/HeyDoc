@@ -12,9 +12,6 @@ public interface AccountDao {
   @Query("SELECT * FROM Account")
   List<Account> getAll();
 
-  @Query("SELECT * FROM Account WHERE last_name LIKE :name LIMIT 1")
-  Account findByName(String name);
-
   @Insert
   long insert(Account account);
 

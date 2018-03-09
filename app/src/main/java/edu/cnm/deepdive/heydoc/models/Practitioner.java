@@ -90,9 +90,6 @@ public class Practitioner {
     this.specialtyId = specialtyId;
   }
 
-
-
-
   public String getPractitionerName() {
     return practitionerName;
   }
@@ -102,7 +99,7 @@ public class Practitioner {
   }
 
   public static Practitioner[] populateData() {
-    return new Practitioner[] {
+    return new Practitioner[]{
         new Practitioner("Abernathy, Katherine", 1),
         new Practitioner("Clayton, Michael", 1),
         new Practitioner("Feldman, Bruce", 1),

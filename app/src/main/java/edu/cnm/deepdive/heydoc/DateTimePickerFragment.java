@@ -1,6 +1,5 @@
 package edu.cnm.deepdive.heydoc;
 
-
 import android.app.DatePickerDialog;
 import android.app.Dialog;
 import android.app.TimePickerDialog;
@@ -24,12 +23,12 @@ public class DateTimePickerFragment extends DialogFragment
   @NonNull
   @Override
   public Dialog onCreateDialog(Bundle savedInstanceState) {
-    Calendar defaultValue = (calendar != null) ? calendar: Calendar.getInstance();
+    Calendar defaultValue = (calendar != null) ? calendar : Calendar.getInstance();
     Dialog dialog = null;
     if (mode == Mode.DATE) {
       dialog = new DatePickerDialog(getActivity(), this, defaultValue.get(Calendar.YEAR),
           defaultValue.get(Calendar.MONTH), defaultValue.get(Calendar.DAY_OF_MONTH));
-    }else {
+    } else {
       dialog = new TimePickerDialog(getActivity(), this, defaultValue.get(Calendar.HOUR_OF_DAY),
           defaultValue.get(Calendar.MINUTE), DateFormat.is24HourFormat(getActivity()));
     }
@@ -80,6 +79,7 @@ public class DateTimePickerFragment extends DialogFragment
   }
 
   public interface OnChangeListener {
+
     void onChange(Calendar calendar);
   }
 }

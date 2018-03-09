@@ -1,9 +1,6 @@
 package edu.cnm.deepdive.heydoc;
 
-
-import android.graphics.Color;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
@@ -13,24 +10,16 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
-import edu.cnm.deepdive.heydoc.models.Appointment;
 import edu.cnm.deepdive.heydoc.models.Practitioner;
 import java.util.List;
-import org.w3c.dom.Text;
 
-
-/**
- * A simple {@link Fragment} subclass.
- */
 public class FavoritesFragment extends Fragment {
 
   private ListView fav;
 
   public FavoritesFragment() {
-    // Required empty public constructor
-  }
 
+  }
 
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -42,7 +31,8 @@ public class FavoritesFragment extends Fragment {
     fav.setOnItemClickListener(new OnItemClickListener() {
       @Override
       public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+        FragmentTransaction transaction = getActivity().getSupportFragmentManager()
+            .beginTransaction();
         ProfileFragment profileFragment = new ProfileFragment();
         transaction.replace(R.id.container1, profileFragment).addToBackStack("home").commit();
       }
@@ -56,8 +46,10 @@ public class FavoritesFragment extends Fragment {
     new Thread(new Runnable() {
       @Override
       public void run() {
-        List<Practitioner> practitioners = UniDatabase.getInstance(getContext()).practitionerDao().getFavorites();
-        final ArrayAdapter<Practitioner> adapter = new ArrayAdapter<>(getActivity(), android.R.layout.simple_list_item_1, practitioners);
+        List<Practitioner> practitioners = UniDatabase.getInstance(getContext()).practitionerDao()
+            .getFavorites();
+        final ArrayAdapter<Practitioner> adapter = new ArrayAdapter<>(getActivity(),
+            android.R.layout.simple_list_item_1, practitioners);
         getActivity().runOnUiThread(new Runnable() {
           @Override
           public void run() {

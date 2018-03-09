@@ -23,10 +23,6 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-
-/**
- * A simple {@link Fragment} subclass.
- */
 public class AppointmentFragment extends Fragment {
 
   private ListView timeList;
@@ -36,7 +32,6 @@ public class AppointmentFragment extends Fragment {
   private ArrayAdapter<ScheduleItem> adapter;
 
   public static AppointmentFragment newInstance(int year, int month, int day) {
-
     Bundle args = new Bundle();
     args.putInt("year", year);
     args.putInt("month", month);
@@ -49,7 +44,6 @@ public class AppointmentFragment extends Fragment {
   public AppointmentFragment() {
 
   }
-
 
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -126,7 +120,6 @@ public class AppointmentFragment extends Fragment {
           dialog.dismiss();
         }
       });
-
       noButton.setOnClickListener(new OnClickListener() {
         @Override
         public void onClick(View v) {
@@ -135,8 +128,5 @@ public class AppointmentFragment extends Fragment {
       });
       dialog.show();
     }
-
-
   }
-
 }
