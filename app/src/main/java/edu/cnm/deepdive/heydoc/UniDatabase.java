@@ -54,6 +54,7 @@ public abstract class UniDatabase extends RoomDatabase {
               public void run() {
                 getInstance(context).specialtyDao().insertAll(Specialty.populateData());
                 getInstance(context).practitionerDao().insertAll(Practitioner.populateData());
+                getInstance(context).accountDao().insertAll(Account.populateData());
               }
             });
           }

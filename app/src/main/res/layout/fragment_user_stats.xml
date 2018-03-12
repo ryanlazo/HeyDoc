@@ -18,6 +18,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_column="0"
+        android:layout_span="2"
         android:textSize="20sp"/>
     </TableRow>
     <TableRow>
@@ -29,7 +30,7 @@
           android:layout_column="0"/>
         <EditText
           android:id="@+id/age_edit"
-          android:inputType="numberDecimal"
+          android:inputType="number"
           android:hint="30"
           android:layout_width="125dp"
           android:layout_height="30dp"
@@ -53,7 +54,7 @@
         >
         <EditText
           android:id="@+id/height_edit"
-          android:inputType="number"
+          android:inputType="numberDecimal"
           android:hint="5'10"
           android:layout_width="125dp"
           android:layout_height="30dp"
@@ -80,7 +81,7 @@
         android:paddingStart="13dp">
         <EditText
           android:id="@+id/weight_edit"
-          android:inputType="number"
+          android:inputType="numberDecimal"
           android:hint="156.3lbs"
           android:layout_width="125dp"
           android:layout_height="30dp"
@@ -107,7 +108,7 @@
         android:paddingStart="5dp">
         <EditText
           android:id="@+id/bp_edit"
-          android:inputType="numberDecimal"
+          android:inputType="number"
           android:hint="117/73"
           android:layout_width="125dp"
           android:layout_height="30dp"
@@ -131,7 +132,7 @@
         android:paddingStart="5dp">
         <EditText
           android:id="@+id/rr_edit"
-          android:inputType="numberDecimal"
+          android:inputType="number"
           android:hint="13 (12-20)"
           android:layout_width="125dp"
           android:layout_height="30dp"
@@ -155,7 +156,7 @@
         android:paddingStart="5dp">
         <EditText
           android:id="@+id/hr_edit"
-          android:inputType="numberDecimal"
+          android:inputType="number"
           android:hint="60-100"
           android:layout_width="125dp"
           android:layout_height="30dp"

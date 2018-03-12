@@ -1,9 +1,12 @@
 package edu.cnm.deepdive.heydoc;
 
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
@@ -24,6 +27,16 @@ public class HomeFragment extends Fragment {
     View view = inflater.inflate(R.layout.fragment_home, container, false);
 
     updateDisplay(view);
+
+    FloatingActionButton spendingAdd = view.findViewById(R.id.stats_button);
+    spendingAdd.setOnClickListener(new OnClickListener() {
+      @Override
+      public void onClick(View v) {
+        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+        UserStatsFragment userStatsFragment = new UserStatsFragment();
+        transaction.replace(R.id.container1, userStatsFragment).addToBackStack("home").commit();
+      }
+    });
 
     return view;
   }

@@ -77,8 +77,15 @@ android:layout_height="wrap_content"
   app:layout_constraintTop_toBottomOf="@+id/cancelled"
   android:paddingRight="20dp"
   android:paddingLeft="20dp">
-
-
 </ListView>
+
+  <android.support.design.widget.FloatingActionButton
+    android:id="@+id/stats_button"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:fabSize="normal"
+    android:src="@drawable/ic_dehaze_black_24dp"
+    app:layout_constraintStart_toEndOf="@id/user_image"
+    app:layout_constraintBottom_toBottomOf="@id/user_image"/>
 
 </android.support.constraint.ConstraintLayout>

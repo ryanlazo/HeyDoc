@@ -2,11 +2,11 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "6d60598f77c7d2763c514ec0d372b221",
+    "identityHash": "79bb410552bddca5214fddcea26901a8",
     "entities": [
       {
         "tableName": "Account",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `last_name` TEXT, `first_name` TEXT, `schedule_appointments` TEXT, `cancelled_appointments` TEXT)",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `last_name` TEXT, `first_name` TEXT, `schedule_appointments` TEXT, `cancelled_appointments` TEXT, `last_physical` INTEGER, `age` INTEGER NOT NULL, `height` REAL NOT NULL, `weight` REAL NOT NULL, `blood_pressure` INTEGER NOT NULL, `respiratory_rate` INTEGER NOT NULL, `heart_rate` INTEGER NOT NULL)",
         "fields": [
           {
             "fieldPath": "id",
@@ -37,6 +37,48 @@
             "columnName": "cancelled_appointments",
             "affinity": "TEXT",
             "notNull": false
+          },
+          {
+            "fieldPath": "lastPhysical",
+            "columnName": "last_physical",
+            "affinity": "INTEGER",
+            "notNull": false
+          },
+          {
+            "fieldPath": "age",
+            "columnName": "age",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "height",
+            "columnName": "height",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "weight",
+            "columnName": "weight",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "bloodPressure",
+            "columnName": "blood_pressure",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "respiratoryRate",
+            "columnName": "respiratory_rate",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "heartRate",
+            "columnName": "heart_rate",
+            "affinity": "INTEGER",
+            "notNull": true
           }
         ],
         "primaryKey": {
@@ -221,7 +263,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"6d60598f77c7d2763c514ec0d372b221\")"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"79bb410552bddca5214fddcea26901a8\")"
     ]
   }
 }
