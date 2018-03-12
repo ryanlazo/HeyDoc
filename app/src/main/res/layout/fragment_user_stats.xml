@@ -18,13 +18,14 @@
         android:layout_height="wrap_content"
         android:layout_column="0"
         android:textSize="20sp"/>
-      <LinearLayout
-        android:layout_column="1"
+    </TableRow>
+    <TableRow>
         android:paddingStart="5dp">
         <TextView
           android:layout_height="wrap_content"
           android:layout_width="wrap_content"
-          android:text="Age:"/>
+          android:text="Age:"
+          android:layout_column="0"/>
         <EditText
           android:id="@+id/age_edit"
           android:inputType="numberDecimal"
@@ -32,8 +33,8 @@
           android:layout_width="125dp"
           android:layout_height="30dp"
           android:background="@drawable/my_border"
-          android:paddingStart="5dp"/>
-      </LinearLayout>
+          android:paddingStart="5dp"
+          android:layout_column="1"/>
     </TableRow>
     <TableRow
       android:paddingStart="10dp">
@@ -116,81 +117,6 @@
           android:background="@drawable/my_border"
           android:paddingStart="5dp"/>
       </LinearLayout>
-    </TableRow>
-    <TableRow
-      android:paddingStart="10dp">
-      <TextView
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:text="@string/spending_total"
-        android:textSize="20sp"
-        android:paddingTop="20dp"/>
-      <TextView
-        android:id="@+id/total_edit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:paddingTop="20dp"/>
-    </TableRow>
-    <TableRow
-      android:paddingStart="10dp">
-      <TextView
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:text="@string/food_total"
-        android:textSize="20sp"
-        android:paddingTop="20dp"/>
-      <TextView
-        android:id="@+id/food_total"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:paddingTop="20dp"/>
-    </TableRow>
-    <TableRow
-      android:paddingStart="10dp">
-      <TextView
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:text="@string/entertainment_total"
-        android:textSize="20sp"
-        android:paddingTop="20dp"/>
-      <TextView
-        android:id="@+id/enter_total"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:paddingTop="20dp"/>
-    </TableRow>
-    <TableRow
-      android:paddingStart="10dp">
-      <TextView
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:text="@string/miscellaneous_total"
-        android:textSize="20sp"
-        android:paddingTop="20dp"/>
-      <TextView
-        android:id="@+id/misc_total"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:paddingTop="20dp"/>
-    </TableRow>
-    <TableRow
-      android:paddingStart="10dp">
-      <TextView
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        android:text="@string/amount_to_save"
-        android:textSize="20sp"
-        android:paddingTop="20dp"/>
-      <TextView
-        android:id="@+id/savings_total"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:paddingTop="20dp"/>
     </TableRow>
     <TableRow
       android:paddingStart="10dp">
