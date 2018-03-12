@@ -19,27 +19,30 @@
         android:layout_height="wrap_content"
         android:layout_column="0"
         android:layout_span="2"
-        android:textSize="20sp"/>
+        android:textSize="15sp"/>
     </TableRow>
-    <TableRow>
-        android:paddingStart="5dp">
+    <TableRow
+        android:paddingStart="30dp"
+      android:paddingTop="10dp"
+      android:paddingBottom="5dp">
         <TextView
           android:layout_height="wrap_content"
           android:layout_width="wrap_content"
           android:text="Age:"
-          android:layout_column="0"/>
+          android:layout_column="0"
+          android:textSize="20sp"/>
         <EditText
           android:id="@+id/age_edit"
           android:inputType="number"
           android:hint="30"
           android:layout_width="125dp"
           android:layout_height="30dp"
-          android:background="@drawable/my_border"
-          android:paddingStart="5dp"
+          android:paddingStart="10dp"
           android:layout_column="1"/>
     </TableRow>
     <TableRow
-      android:paddingStart="10dp">
+      android:paddingStart="30dp"
+      android:paddingTop="10dp">
       <TextView
         android:labelFor="@+id/height"
         android:text="Height:"
@@ -58,16 +61,14 @@
           android:hint="5'10"
           android:layout_width="125dp"
           android:layout_height="30dp"
-          android:background="@drawable/my_border"
-          android:paddingStart="5dp"/>
-        <!--<TextView-->
-          <!--android:layout_width="wrap_content"-->
-          <!--android:layout_height="wrap_content"-->
-          <!--android:text="@string/people"/>-->
+
+          android:paddingStart="10dp"/>
+
       </LinearLayout>
     </TableRow>
     <TableRow
-      android:paddingStart="10dp">
+      android:paddingStart="30dp"
+      android:paddingTop="10dp">
       <TextView
         android:labelFor="@+id/weight"
         android:text="Weight"
@@ -85,16 +86,14 @@
           android:hint="156.3lbs"
           android:layout_width="125dp"
           android:layout_height="30dp"
-          android:background="@drawable/my_border"
-          android:paddingStart="5dp"/>
-        <!--<TextView-->
-          <!--android:layout_height="wrap_content"-->
-          <!--android:layout_width="wrap_content"-->
-          <!--android:text="@string/percent_sign"/>-->
+
+          android:paddingStart="10dp"/>
+
       </LinearLayout>
     </TableRow>
     <TableRow
-      android:paddingStart="10dp">
+      android:paddingStart="30dp"
+      android:paddingTop="10dp">
       <TextView
         android:labelFor="@+id/bp"
         android:text="Blood Pressure:"
@@ -112,13 +111,14 @@
           android:hint="117/73"
           android:layout_width="125dp"
           android:layout_height="30dp"
-          android:background="@drawable/my_border"
-          android:paddingStart="5dp"/>
+
+          android:paddingStart="30dp"/>
       </LinearLayout>
     </TableRow>
 
     <TableRow
-      android:paddingStart="10dp">
+      android:paddingStart="30dp"
+      android:paddingTop="10dp">
       <TextView
         android:labelFor="@+id/rr"
         android:text="Respiratory Rate:"
@@ -136,13 +136,14 @@
           android:hint="13 (12-20)"
           android:layout_width="125dp"
           android:layout_height="30dp"
-          android:background="@drawable/my_border"
-          android:paddingStart="5dp"/>
+
+          android:paddingStart="10dp"/>
       </LinearLayout>
     </TableRow>
 
     <TableRow
-      android:paddingStart="10dp">
+      android:paddingStart="30dp"
+      android:paddingTop="10dp">
       <TextView
         android:labelFor="@+id/hr"
         android:text="Heart Rate:"
@@ -160,13 +161,14 @@
           android:hint="60-100"
           android:layout_width="125dp"
           android:layout_height="30dp"
-          android:background="@drawable/my_border"
-          android:paddingStart="5dp"/>
+
+          android:paddingStart="10dp"/>
       </LinearLayout>
     </TableRow>
 
     <TableRow
-      android:paddingStart="10dp">
+      android:paddingStart="30dp"
+      android:paddingTop="10dp">
       <Button
         android:id="@+id/update_button"
         android:layout_width="wrap_content"
