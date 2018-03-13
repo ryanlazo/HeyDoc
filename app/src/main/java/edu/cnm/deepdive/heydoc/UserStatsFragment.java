@@ -86,7 +86,7 @@ public class UserStatsFragment extends Fragment implements TextWatcher{
             ageEdit.setText(String.format("%d", account.getAge()));
             heightEdit.setText(String.format("%.2f", account.getHeight()));
             weightEdit.setText(String.format("%.2f", account.getWeight()));
-            bpEdit.setText(String.format("%d", account.getBloodPressure()));
+            bpEdit.setText(String.format("%d/80", account.getBloodPressure()));
             rrEdit.setText(String.format("%d", account.getRespiratoryRate()));
             hrEdit.setText(String.format("%d", account.getHeartRate()));
           }

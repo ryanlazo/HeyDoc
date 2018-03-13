@@ -1,5 +1,7 @@
 package edu.cnm.deepdive.heydoc;
 
+import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
@@ -8,7 +10,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import edu.cnm.deepdive.heydoc.models.Appointment;
 import java.util.List;
@@ -16,6 +21,9 @@ import java.util.List;
 public class HomeFragment extends Fragment {
 
   private ListView appt;
+  private ListView cancel;
+  private Button yesButton;
+  private Button noButton;
 
   public HomeFragment() {
 
@@ -25,6 +33,8 @@ public class HomeFragment extends Fragment {
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
       Bundle savedInstanceState) {
     View view = inflater.inflate(R.layout.fragment_home, container, false);
+    appt = view.findViewById(R.id.appt_list);
+    cancel = view.findViewById(R.id.cancel_list);
 
     updateDisplay(view);
 
@@ -32,9 +42,18 @@ public class HomeFragment extends Fragment {
     spendingAdd.setOnClickListener(new OnClickListener() {
       @Override
       public void onClick(View v) {
-        FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+        FragmentTransaction transaction = getActivity().getSupportFragmentManager()
+            .beginTransaction();
         UserStatsFragment userStatsFragment = new UserStatsFragment();
         transaction.replace(R.id.container1, userStatsFragment).addToBackStack("home").commit();
+      }
+    });
+
+    appt.setOnItemClickListener(new OnItemClickListener() {
+      @Override
+      public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        HomeFragment.AppointmentDialog appointmentDialog = new HomeFragment.AppointmentDialog();
+        appointmentDialog.appointmentDialog(position, view);
       }
     });
 
@@ -42,21 +61,70 @@ public class HomeFragment extends Fragment {
   }
 
   private void updateDisplay(View view) {
-    appt = view.findViewById(R.id.appt_list);
+
     new Thread(new Runnable() {
       @Override
       public void run() {
         List<Appointment> appointments = UniDatabase.getInstance(getContext()).appointmentDao()
-            .getAll();
-        final ArrayAdapter<Appointment> adapter = new ArrayAdapter<>(getActivity(),
+            .getSet();
+        List<Appointment> cancelledAppointments = UniDatabase.getInstance(getContext())
+            .appointmentDao()
+            .getCancelled();
+        final ArrayAdapter<Appointment> setAdapter = new ArrayAdapter<>(getActivity(),
             android.R.layout.simple_list_item_1, appointments);
+        final ArrayAdapter<Appointment> cancelledAdapter = new ArrayAdapter<>(getActivity(),
+            android.R.layout.simple_list_item_1, cancelledAppointments);
         getActivity().runOnUiThread(new Runnable() {
           @Override
           public void run() {
-            appt.setAdapter(adapter);
+            appt.setAdapter(setAdapter);
+            cancel.setAdapter(cancelledAdapter);
           }
         });
       }
     }).start();
+  }
+
+  private class AppointmentDialog {
+
+    public void appointmentDialog(final int position, final View view) {
+      AlertDialog.Builder builder = new AlertDialog.Builder(getContext());
+
+      LayoutInflater inflater = getLayoutInflater();
+      @SuppressLint("InflateParams") final View dialogView = inflater
+          .inflate(R.layout.cancel_dialog, null);
+
+      builder.setView(dialogView);
+
+      yesButton = dialogView.findViewById(R.id.yes_button);
+      noButton = dialogView.findViewById(R.id.no_button);
+
+      final AlertDialog dialog = builder.create();
+
+      yesButton.setOnClickListener(new OnClickListener() {
+        @Override
+        public void onClick(View v) {
+          new Thread(new Runnable() {
+            @Override
+            public void run() {
+              Appointment appointment = UniDatabase.getInstance(getContext()).appointmentDao()
+                  .getSelected(position + 1);
+              appointment.setIsCancelled(1);
+              UniDatabase.getInstance(getContext()).appointmentDao().updateSelected(appointment);
+            }
+          }).start();
+          dialog.dismiss();
+          updateDisplay(view);
+        }
+      });
+
+      noButton.setOnClickListener(new OnClickListener() {
+        @Override
+        public void onClick(View v) {
+          dialog.dismiss();
+        }
+      });
+      dialog.show();
+    }
   }
 }

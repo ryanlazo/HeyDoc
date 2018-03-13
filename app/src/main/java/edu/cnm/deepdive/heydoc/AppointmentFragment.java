@@ -89,14 +89,13 @@ public class AppointmentFragment extends Fragment {
       builder.setView(dialogView);
 
       apptSpinner = dialogView.findViewById(R.id.appt_spinner);
-      apptLength = dialogView.findViewById(R.id.appt_length);
       yesButton = dialogView.findViewById(R.id.yes_button);
       noButton = dialogView.findViewById(R.id.no_button);
 
       String[] options = {"Regular cleaning - 30 minutes",
-      "Cavity Repair - 60 minutes",
-      "New Patient - 90 minutes",
-      "Root Canal - 90 minutes"};
+      "Cavity Repair - 1 hour",
+      "New Patient - 1 hour 30 minutes",
+      "Root Canal - 1 hour 30 minutes"};
       final ArrayAdapter<String> optionAdapter = new ArrayAdapter<>(getActivity(),
           android.R.layout.simple_spinner_dropdown_item, options);
       apptSpinner.setAdapter(optionAdapter);
@@ -106,8 +105,38 @@ public class AppointmentFragment extends Fragment {
       yesButton.setOnClickListener(new OnClickListener() {
         @Override
         public void onClick(View v) {
-          adapter.getItem(position).setBooked(true);
-          adapter.notifyDataSetChanged();
+          switch (apptSpinner.getSelectedItem().toString()) {
+            case "Regular cleaning - 30 minutes":
+              adapter.getItem(position).setBooked(true);
+              adapter.getItem(position + 1).setBooked(true);
+              adapter.notifyDataSetChanged();
+              break;
+            case "Cavity Repair - 1 hour":
+              adapter.getItem(position).setBooked(true);
+              adapter.getItem(position + 1).setBooked(true);
+              adapter.getItem(position + 2).setBooked(true);
+              adapter.getItem(position + 3).setBooked(true);
+              adapter.notifyDataSetChanged();
+              break;
+            case "New Patient - 1 hour 30 minutes":
+              adapter.getItem(position).setBooked(true);
+              adapter.getItem(position + 1).setBooked(true);
+              adapter.getItem(position + 2).setBooked(true);
+              adapter.getItem(position + 3).setBooked(true);
+              adapter.getItem(position + 4).setBooked(true);
+              adapter.getItem(position + 5).setBooked(true);
+              adapter.notifyDataSetChanged();
+              break;
+            case "Root Canal - 1 hour 30 minutes":
+              adapter.getItem(position).setBooked(true);
+              adapter.getItem(position + 1).setBooked(true);
+              adapter.getItem(position + 2).setBooked(true);
+              adapter.getItem(position + 3).setBooked(true);
+              adapter.getItem(position + 4).setBooked(true);
+              adapter.getItem(position + 5).setBooked(true);
+              adapter.notifyDataSetChanged();
+              break;
+          }
           new Thread(new Runnable() {
             @Override
             public void run() {
@@ -123,8 +152,21 @@ public class AppointmentFragment extends Fragment {
               }
               Appointment appointment = new Appointment();
               appointment.setDate(calendar.getTime());
-              appointment.setDuration(15);
               appointment.setPractionerId(1); //TODO CHANGE THIS YOU LAZY ***
+              switch (apptSpinner.getSelectedItem().toString()) {
+                case "Regular cleaning - 30 minutes":
+                  appointment.setDuration(30);
+                  break;
+                case "Cavity Repair - 1 hour":
+                  appointment.setDuration(60);
+                  break;
+                case "New Patient - 1 hour 30 minutes":
+                  appointment.setDuration(90);
+                  break;
+                case "Root Canal - 1 hour 30 minutes":
+                  appointment.setDuration(90);
+                  break;
+              }
               UniDatabase.getInstance(getContext()).appointmentDao().insert(appointment);
             }
           }).start();

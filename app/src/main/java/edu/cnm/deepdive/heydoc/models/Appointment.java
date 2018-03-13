@@ -26,6 +26,9 @@ public class Appointment {
   @ColumnInfo(name = "practitioner_id")
   private long practionerId;
 
+  @ColumnInfo(name = "is_cancelled")
+  private int isCancelled;
+
   public static class Converters {
 
     @TypeConverter
@@ -73,6 +76,14 @@ public class Appointment {
 
   public void setPractionerId(long practionerId) {
     this.practionerId = practionerId;
+  }
+
+  public int getIsCancelled() {
+    return isCancelled;
+  }
+
+  public void setIsCancelled(int isCancelled) {
+    this.isCancelled = isCancelled;
   }
 
   @Override

@@ -1,25 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-  xmlns:tools="http://schemas.android.com/tools"
-  android:layout_width="match_parent"
-  android:layout_height="match_parent"
   android:orientation="vertical"
-  xmlns:app="http://schemas.android.com/apk/res-auto"
-  tools:context="edu.cnm.deepdive.heydoc.AppointmentFragment">
+  android:layout_width="match_parent"
+  android:layout_height="match_parent">
 
   <TextView
-    android:id="@+id/confirm_text"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="Select reason for visit:"
-    android:textSize="20dp"
-    android:textAlignment="center"/>
-
-  <Spinner
-    android:id="@+id/appt_spinner"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@android:drawable/btn_dropdown"
-    android:spinnerMode="dropdown"/>
+    android:text="Do you want to cancel this appointment?"
+    android:textSize="20dp"
+    android:textAlignment="center"/>
 
   <LinearLayout
     android:layout_width="match_parent"
@@ -41,6 +31,5 @@
 
 
   </LinearLayout>
-
 
 </LinearLayout>

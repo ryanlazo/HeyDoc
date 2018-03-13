@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "79bb410552bddca5214fddcea26901a8",
+    "identityHash": "6c1e665a65daba0a0d93754b0c86ffc8",
     "entities": [
       {
         "tableName": "Account",
@@ -92,7 +92,7 @@
       },
       {
         "tableName": "Appointment",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `date` INTEGER, `duration` INTEGER NOT NULL, `practitioner_id` INTEGER NOT NULL, FOREIGN KEY(`practitioner_id`) REFERENCES `Practitioner`(`id`) ON UPDATE NO ACTION ON DELETE NO ACTION )",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `date` INTEGER, `duration` INTEGER NOT NULL, `practitioner_id` INTEGER NOT NULL, `is_cancelled` INTEGER NOT NULL, FOREIGN KEY(`practitioner_id`) REFERENCES `Practitioner`(`id`) ON UPDATE NO ACTION ON DELETE NO ACTION )",
         "fields": [
           {
             "fieldPath": "id",
@@ -115,6 +115,12 @@
           {
             "fieldPath": "practionerId",
             "columnName": "practitioner_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "isCancelled",
+            "columnName": "is_cancelled",
             "affinity": "INTEGER",
             "notNull": true
           }
@@ -263,7 +269,7 @@
     ],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"79bb410552bddca5214fddcea26901a8\")"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"6c1e665a65daba0a0d93754b0c86ffc8\")"
     ]
   }
 }
