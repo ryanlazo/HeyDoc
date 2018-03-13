@@ -12,7 +12,7 @@ import java.util.List;
 public interface ProfileDao {
 
   @Query("SELECT * FROM Profile")
-  List<Practitioner> getAll();
+  List<Profile> getAll();
 
   @Insert
   long insert(Profile profile);

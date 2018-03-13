@@ -38,7 +38,6 @@ public class Profile {
   @ColumnInfo(name = "specialty_id")
   private long specialtyId;
 
-
   public long getId() {
     return id;
   }

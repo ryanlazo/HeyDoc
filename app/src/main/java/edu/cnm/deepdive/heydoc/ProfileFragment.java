@@ -10,11 +10,15 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.CalendarView;
 import android.widget.CalendarView.OnDateChangeListener;
+import android.widget.RatingBar;
+import android.widget.RatingBar.OnRatingBarChangeListener;
 import edu.cnm.deepdive.heydoc.models.Practitioner;
+import edu.cnm.deepdive.heydoc.models.Profile;
 
 public class ProfileFragment extends Fragment {
 
   CalendarView calendar;
+  RatingBar ratingBar;
 
   public ProfileFragment() {
 
@@ -25,6 +29,14 @@ public class ProfileFragment extends Fragment {
       Bundle savedInstanceState) {
     final View view = inflater.inflate(R.layout.fragment_profile, container, false);
     calendar = view.findViewById(R.id.calendar);
+    ratingBar = view.findViewById(R.id.rating);
+    new Thread(new Runnable() {
+      @Override
+      public void run() {
+        Practitioner doc = UniDatabase.getInstance(getContext()).practitionerDao().findByName();
+        ratingBar.setRating(doc.getRating());
+      }
+    }).start();
     calendar.setOnDateChangeListener(new OnDateChangeListener() {
       @Override
       public void onSelectedDayChange(CalendarView view, int year, int month,
@@ -51,6 +63,21 @@ public class ProfileFragment extends Fragment {
         }).start();
       }
     });
+
+    ratingBar.setOnRatingBarChangeListener(new OnRatingBarChangeListener() {
+      @Override
+      public void onRatingChanged(final RatingBar ratingBar, float rating, boolean fromUser) {
+        new Thread(new Runnable() {
+          @Override
+          public void run() {
+            Practitioner doc = UniDatabase.getInstance(getContext()).practitionerDao().findByName();
+            doc.setRating(ratingBar.getNumStars());
+            UniDatabase.getInstance(getContext()).practitionerDao().update(doc);
+          }
+        }).start();
+      }
+    });
+
     return view;
   }
 }

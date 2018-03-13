@@ -40,6 +40,9 @@ public class Practitioner {
   @ColumnInfo(name = "is_favorite")
   private int isFavorite;
 
+  @ColumnInfo(name = "rating")
+  private int rating;
+
 
   public int getIsFavorite() {
     return isFavorite;
@@ -96,6 +99,14 @@ public class Practitioner {
 
   public void setPractitionerName(String practitionerName) {
     this.practitionerName = practitionerName;
+  }
+
+  public int getRating() {
+    return rating;
+  }
+
+  public void setRating(int rating) {
+    this.rating = rating;
   }
 
   public static Practitioner[] populateData() {

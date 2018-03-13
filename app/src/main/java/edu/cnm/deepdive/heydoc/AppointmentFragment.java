@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 import edu.cnm.deepdive.heydoc.models.Appointment;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -74,6 +75,7 @@ public class AppointmentFragment extends Fragment {
         appointmentDialog.appointmentDialog(position);
       }
     });
+
     return view;
   }
 
@@ -170,6 +172,7 @@ public class AppointmentFragment extends Fragment {
               UniDatabase.getInstance(getContext()).appointmentDao().insert(appointment);
             }
           }).start();
+          showToast();
           dialog.dismiss();
         }
       });
@@ -181,5 +184,9 @@ public class AppointmentFragment extends Fragment {
       });
       dialog.show();
     }
+  }
+
+  public void showToast() {
+    Toast.makeText(getContext(), "You will be contacted when your appointment has been confirmed.", Toast.LENGTH_LONG).show();
   }
 }

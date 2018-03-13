@@ -9,17 +9,19 @@ import android.support.annotation.NonNull;
 import edu.cnm.deepdive.heydoc.dao.AccountDao;
 import edu.cnm.deepdive.heydoc.dao.AppointmentDao;
 import edu.cnm.deepdive.heydoc.dao.PractitionerDao;
+import edu.cnm.deepdive.heydoc.dao.ProfileDao;
 import edu.cnm.deepdive.heydoc.dao.ScheduleDao;
 import edu.cnm.deepdive.heydoc.dao.SpecialtyDao;
 import edu.cnm.deepdive.heydoc.models.Account;
 import edu.cnm.deepdive.heydoc.models.Appointment;
 import edu.cnm.deepdive.heydoc.models.Practitioner;
+import edu.cnm.deepdive.heydoc.models.Profile;
 import edu.cnm.deepdive.heydoc.models.Schedule;
 import edu.cnm.deepdive.heydoc.models.Specialty;
 import java.util.concurrent.Executors;
 
 @Database(entities = {Account.class, Appointment.class, Practitioner.class,
-    Schedule.class, Specialty.class}, version = 1)
+    Schedule.class, Specialty.class, Profile.class}, version = 1)
 public abstract class UniDatabase extends RoomDatabase {
 
   private static UniDatabase INSTANCE;
@@ -33,6 +35,8 @@ public abstract class UniDatabase extends RoomDatabase {
   public abstract ScheduleDao scheduleDao();
 
   public abstract SpecialtyDao specialtyDao();
+
+  public abstract ProfileDao profileDao();
 
   public synchronized static UniDatabase getInstance(Context context) {
     if (INSTANCE == null) {
