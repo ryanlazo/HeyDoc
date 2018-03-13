@@ -37,7 +37,7 @@
           android:hint="30"
           android:layout_width="125dp"
           android:layout_height="wrap_content"
-          android:paddingStart="10dp"
+
           android:layout_column="1"/>
     </TableRow>
     <TableRow
@@ -53,16 +53,13 @@
         android:textSize="20sp"/>
       <LinearLayout
         android:layout_column="1"
-        android:paddingStart="13dp"
         >
         <EditText
           android:id="@+id/height_edit"
           android:inputType="numberDecimal"
           android:hint="5'10"
           android:layout_width="125dp"
-          android:layout_height="wrap_content"
-
-          android:paddingStart="10dp"/>
+          android:layout_height="wrap_content"/>
 
       </LinearLayout>
     </TableRow>
@@ -78,16 +75,13 @@
         android:layout_column="0"
         android:textSize="20sp"/>
       <LinearLayout
-        android:layout_column="1"
-        android:paddingStart="13dp">
+        android:layout_column="1">
         <EditText
           android:id="@+id/weight_edit"
           android:inputType="number"
           android:hint="156.3lbs"
           android:layout_width="125dp"
-          android:layout_height="wrap_content"
-
-          android:paddingStart="10dp"/>
+          android:layout_height="wrap_content"/>
 
       </LinearLayout>
     </TableRow>
@@ -103,16 +97,13 @@
         android:layout_column="0"
         android:textSize="20sp"/>
       <LinearLayout
-        android:layout_column="1"
-        android:paddingStart="5dp">
+        android:layout_column="1">
         <EditText
           android:id="@+id/bp_edit"
           android:inputType="numberDecimal"
           android:hint="117/73"
           android:layout_width="125dp"
-          android:layout_height="wrap_content"
-
-          android:paddingStart="30dp"/>
+          android:layout_height="wrap_content"/>
       </LinearLayout>
     </TableRow>
 
@@ -128,16 +119,13 @@
         android:layout_column="0"
         android:textSize="20sp"/>
       <LinearLayout
-        android:layout_column="1"
-        android:paddingStart="5dp">
+        android:layout_column="1">
         <EditText
           android:id="@+id/rr_edit"
           android:inputType="numberDecimal"
           android:hint="13 (12-20)"
           android:layout_width="125dp"
-          android:layout_height="wrap_content"
-
-          android:paddingStart="10dp"/>
+          android:layout_height="wrap_content"/>
       </LinearLayout>
     </TableRow>
 
@@ -153,16 +141,13 @@
         android:layout_column="0"
         android:textSize="20sp"/>
       <LinearLayout
-        android:layout_column="1"
-        android:paddingStart="5dp">
+        android:layout_column="1">
         <EditText
           android:id="@+id/hr_edit"
           android:inputType="numberDecimal"
           android:hint="60-100"
           android:layout_width="125dp"
-          android:layout_height="wrap_content"
-
-          android:paddingStart="10dp"/>
+          android:layout_height="wrap_content"/>
       </LinearLayout>
     </TableRow>
 

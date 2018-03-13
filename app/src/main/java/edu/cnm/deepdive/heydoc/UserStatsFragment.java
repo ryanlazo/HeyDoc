@@ -27,7 +27,7 @@ public class UserStatsFragment extends Fragment implements TextWatcher{
   private int bp;
   private int rr;
   private int hr;
-  private Account account = new Account();
+  private Account account;
 
   public UserStatsFragment() {
 
@@ -59,7 +59,6 @@ public class UserStatsFragment extends Fragment implements TextWatcher{
         new Thread(new Runnable() {
           @Override
           public void run() {
-            Account account = UniDatabase.getInstance(getContext()).accountDao().findById();
             account.setAge(age);
             account.setHeight(height);
             account.setWeight(weight);
@@ -80,6 +79,7 @@ public class UserStatsFragment extends Fragment implements TextWatcher{
     new Thread(new Runnable() {
       @Override
       public void run() {
+        account = UniDatabase.getInstance(getContext()).accountDao().findById();
         getActivity().runOnUiThread(new Runnable() {
           @Override
           public void run() {

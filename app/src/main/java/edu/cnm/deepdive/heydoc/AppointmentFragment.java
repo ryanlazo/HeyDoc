@@ -14,6 +14,7 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import edu.cnm.deepdive.heydoc.models.Appointment;
 import java.text.ParseException;
@@ -26,7 +27,8 @@ import java.util.List;
 public class AppointmentFragment extends Fragment {
 
   private ListView timeList;
-  private TextView confirmText;
+  private Spinner apptSpinner;
+  private TextView apptLength;
   private Button yesButton;
   private Button noButton;
   private ArrayAdapter<ScheduleItem> adapter;
@@ -86,9 +88,18 @@ public class AppointmentFragment extends Fragment {
 
       builder.setView(dialogView);
 
-      confirmText = dialogView.findViewById(R.id.confirm_text);
+      apptSpinner = dialogView.findViewById(R.id.appt_spinner);
+      apptLength = dialogView.findViewById(R.id.appt_length);
       yesButton = dialogView.findViewById(R.id.yes_button);
       noButton = dialogView.findViewById(R.id.no_button);
+
+      String[] options = {"Regular cleaning - 30 minutes",
+      "Cavity Repair - 60 minutes",
+      "New Patient - 90 minutes",
+      "Root Canal - 90 minutes"};
+      final ArrayAdapter<String> optionAdapter = new ArrayAdapter<>(getActivity(),
+          android.R.layout.simple_spinner_dropdown_item, options);
+      apptSpinner.setAdapter(optionAdapter);
 
       final AlertDialog dialog = builder.create();
 

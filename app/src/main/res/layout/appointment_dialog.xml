@@ -6,22 +6,32 @@
   xmlns:app="http://schemas.android.com/apk/res-auto"
   tools:context="edu.cnm.deepdive.heydoc.AppointmentFragment">
 
-  <TableLayout
+  <TextView
+    android:id="@+id/confirm_text"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Select reason for visit:"
+    android:textSize="20dp"
+    android:textAlignment="center"/>
+
+  <Spinner
+    android:id="@+id/appt_spinner"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:background="@android:drawable/btn_dropdown"
+    android:spinnerMode="dropdown"/>
 
-    <TableRow>
-      <TextView
-        android:id="@+id/confirm_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Do you want to book this 15 minute appointment?"
-        android:textSize="20dp"
-        android:textAlignment="center"/>
+  <TextView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text=" Appointment length:"
+    android:textSize="20dp"/>
 
-    </TableRow>
-
-  </TableLayout>
+  <TextView
+    android:id="@+id/appt_length"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textSize="20dp"/>
 
   <LinearLayout
     android:layout_width="match_parent"
