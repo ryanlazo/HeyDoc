@@ -2,6 +2,8 @@ package edu.cnm.deepdive.heydoc;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -11,7 +13,7 @@ import android.widget.EditText;
 import edu.cnm.deepdive.heydoc.models.Account;
 import java.util.List;
 
-public class UserStatsFragment extends Fragment {
+public class UserStatsFragment extends Fragment implements TextWatcher{
 
   private EditText ageEdit;
   private EditText heightEdit;
@@ -41,6 +43,12 @@ public class UserStatsFragment extends Fragment {
     bpEdit = view.findViewById(R.id.bp_edit);
     rrEdit = view.findViewById(R.id.rr_edit);
     hrEdit = view.findViewById(R.id.hr_edit);
+    ageEdit.addTextChangedListener(this);
+    heightEdit.addTextChangedListener(this);
+    weightEdit.addTextChangedListener(this);
+    bpEdit.addTextChangedListener(this);
+    rrEdit.addTextChangedListener(this);
+    hrEdit.addTextChangedListener(this);
     Button button = view.findViewById(R.id.update_button);
 
     updateDisplay();
@@ -48,15 +56,10 @@ public class UserStatsFragment extends Fragment {
     button.setOnClickListener(new OnClickListener() {
       @Override
       public void onClick(View v) {
-        age = Integer.parseInt(ageEdit.getText().toString());
-        height = Double.parseDouble(heightEdit.getText().toString());
-        weight = Double.parseDouble(weightEdit.getText().toString());
-        bp = Integer.parseInt(bpEdit.getText().toString());
-        rr = Integer.parseInt(rrEdit.getText().toString());
-        hr = Integer.parseInt(hrEdit.getText().toString());
         new Thread(new Runnable() {
           @Override
           public void run() {
+            Account account = UniDatabase.getInstance(getContext()).accountDao().findById();
             account.setAge(age);
             account.setHeight(height);
             account.setWeight(weight);
@@ -77,18 +80,43 @@ public class UserStatsFragment extends Fragment {
     new Thread(new Runnable() {
       @Override
       public void run() {
-        final List<Account> accounts = UniDatabase.getInstance(getContext()).accountDao().getAll();
         getActivity().runOnUiThread(new Runnable() {
           @Override
           public void run() {
             ageEdit.setText(String.format("%d", account.getAge()));
             heightEdit.setText(String.format("%.2f", account.getHeight()));
             weightEdit.setText(String.format("%.2f", account.getWeight()));
-            bpEdit.setText(String.format("%d", account.getRespiratoryRate()));
+            bpEdit.setText(String.format("%d", account.getBloodPressure()));
+            rrEdit.setText(String.format("%d", account.getRespiratoryRate()));
             hrEdit.setText(String.format("%d", account.getHeartRate()));
           }
         });
       }
     }).start();
+  }
+
+  @Override
+  public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+  }
+
+  @Override
+  public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+  }
+
+  @Override
+  public void afterTextChanged(Editable s) {
+
+    try {
+      age = Integer.parseInt(ageEdit.getText().toString());
+      height = Double.parseDouble(heightEdit.getText().toString());
+      weight = Double.parseDouble(weightEdit.getText().toString());
+      bp = Integer.parseInt(bpEdit.getText().toString());
+      rr = Integer.parseInt(rrEdit.getText().toString());
+      hr = Integer.parseInt(hrEdit.getText().toString());
+    } catch (NumberFormatException e) {
+
+    }
   }
 }

@@ -16,6 +16,9 @@ public interface AccountDao {
   @Query("SELECT * FROM Account")
   List<Account> getAll();
 
+  @Query("SELECT * FROM account WHERE id = 1")
+  Account findById();
+
   @Insert
   long insert(Account account);
 

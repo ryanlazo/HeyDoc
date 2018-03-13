@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="Android SQLite">
+  <database-model serializer="dbm" rdbms="SQLITE" format-version="4.7">
+    <root id="1"/>
+    <schema id="2" parent="1" name="main">
+      <Current>1</Current>
+      <Visible>1</Visible>
+    </schema>
+    <collation id="3" parent="1" name="BINARY"/>
+    <collation id="4" parent="1" name="NOCASE"/>
+    <collation id="5" parent="1" name="RTRIM"/>
+    <table id="6" parent="2" name="Account"/>
+    <table id="7" parent="2" name="Appointment"/>
+    <table id="8" parent="2" name="Practitioner"/>
+    <table id="9" parent="2" name="Schedule"/>
+    <table id="10" parent="2" name="Specialty"/>
+    <table id="11" parent="2" name="android_metadata"/>
+    <table id="12" parent="2" name="room_master_table"/>
+    <table id="13" parent="2" name="sqlite_master">
+      <System>1</System>
+    </table>
+    <table id="14" parent="2" name="sqlite_sequence">
+      <System>1</System>
+    </table>
+    <column id="15" parent="6" name="id">
+      <Position>1</Position>
+      <DataType>INTEGER|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="16" parent="6" name="last_name">
+      <Position>2</Position>
+      <DataType>TEXT|0</DataType>
+    </column>
+    <column id="17" parent="6" name="first_name">
+      <Position>3</Position>
+      <DataType>TEXT|0</DataType>
+    </column>
+    <column id="18" parent="6" name="schedule_appointments">
+      <Position>4</Position>
+      <DataType>TEXT|0</DataType>
+    </column>
+    <column id="19" parent="6" name="cancelled_appointments">
+      <Position>5</Position>
+      <DataType>TEXT|0</DataType>
+    </column>
+    <column id="20" parent="6" name="last_physical">
+      <Position>6</Position>
+      <DataType>INTEGER|0</DataType>
+    </column>
+    <column id="21" parent="6" name="age">
+      <Position>7</Position>
+      <DataType>INTEGER|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="22" parent="6" name="height">
+      <Position>8</Position>
+      <DataType>REAL|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="23" parent="6" name="weight">
+      <Position>9</Position>
+      <DataType>REAL|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="24" parent="6" name="blood_pressure">
+      <Position>10</Position>
+      <DataType>INTEGER|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="25" parent="6" name="respiratory_rate">
+      <Position>11</Position>
+      <DataType>INTEGER|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="26" parent="6" name="heart_rate">
+      <Position>12</Position>
+      <DataType>INTEGER|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="27" parent="6">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="28" parent="7" name="id">
+      <Position>1</Position>
+      <DataType>INTEGER|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="29" parent="7" name="date">
+      <Position>2</Position>
+      <DataType>INTEGER|0</DataType>
+    </column>
+    <column id="30" parent="7" name="duration">
+      <Position>3</Position>
+      <DataType>INTEGER|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="31" parent="7" name="practitioner_id">
+      <Position>4</Position>
+      <DataType>INTEGER|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="32" parent="7">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="33" parent="7">
+      <ColNames>practitioner_id</ColNames>
+      <RefTableName>Practitioner</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="34" parent="8" name="id">
+      <Position>1</Position>
+      <DataType>INTEGER|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="35" parent="8" name="practitioner_name">
+      <Position>2</Position>
+      <DataType>TEXT|0</DataType>
+    </column>
+    <column id="36" parent="8" name="last_name">
+      <Position>3</Position>
+      <DataType>TEXT|0</DataType>
+    </column>
+    <column id="37" parent="8" name="first_name">
+      <Position>4</Position>
+      <DataType>TEXT|0</DataType>
+    </column>
+    <column id="38" parent="8" name="location">
+      <Position>5</Position>
+      <DataType>TEXT|0</DataType>
+    </column>
+    <column id="39" parent="8" name="specialty_id">
+      <Position>6</Position>
+      <DataType>INTEGER|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="40" parent="8" name="is_favorite">
+      <Position>7</Position>
+      <DataType>INTEGER|0</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <key id="41" parent="8">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="42" parent="8">
+      <ColNames>specialty_id</ColNames>
+      <RefTableName>Specialty</RefTableName>
+      <RefColNames>id</RefColNames>
+    </foreign-key>
+    <column id="43" parent="9" name="id">
+      <Position>1</Position>
+      <DataType>INTEGER|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="44" parent="9" name="date">
+      <Position>2</Position>
+      <DataType>INTEGER|0</DataType>
+    </column>
+    <key id="45" parent="9">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="46" parent="10" name="id">
+      <Position>1</Position>
+      <DataType>INTEGER|0</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+    </column>
+    <column id="47" parent="10" name="specialty_name">
+      <Position>2</Position>
+      <DataType>TEXT|0</DataType>
+    </column>
+    <key id="48" parent="10">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="49" parent="11" name="locale">
+      <Position>1</Position>
+      <DataType>TEXT|0</DataType>
+    </column>
+    <column id="50" parent="12" name="id">
+      <Position>1</Position>
+      <DataType>INTEGER|0</DataType>
+    </column>
+    <column id="51" parent="12" name="identity_hash">
+      <Position>2</Position>
+      <DataType>TEXT|0</DataType>
+    </column>
+    <key id="52" parent="12">
+      <ColNames>id</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <column id="53" parent="13" name="type">
+      <Position>1</Position>
+      <DataType>text|0</DataType>
+    </column>
+    <column id="54" parent="13" name="name">
+      <Position>2</Position>
+      <DataType>text|0</DataType>
+    </column>
+    <column id="55" parent="13" name="tbl_name">
+      <Position>3</Position>
+      <DataType>text|0</DataType>
+    </column>
+    <column id="56" parent="13" name="rootpage">
+      <Position>4</Position>
+      <DataType>integer|0</DataType>
+    </column>
+    <column id="57" parent="13" name="sql">
+      <Position>5</Position>
+      <DataType>text|0</DataType>
+    </column>
+    <column id="58" parent="14" name="name">
+      <Position>1</Position>
+    </column>
+    <column id="59" parent="14" name="seq">
+      <Position>2</Position>
+    </column>
+  </database-model>
+</dataSource>
