@@ -12,11 +12,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import com.google.api.services.calendar.model.Event;
+import edu.cnm.deepdive.heydoc.service.CalendarService;
+import edu.cnm.deepdive.heydoc.service.CalendarService.Callback;
+import edu.cnm.deepdive.heydoc.service.CalendarService.GetEventsTask;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity
     implements NavigationView.OnNavigationItemSelectedListener {
 
   private static UniDatabase database;
+  private CalendarService calendarService;
+
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -33,9 +40,11 @@ public class MainActivity extends AppCompatActivity
 
     NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
     navigationView.setNavigationItemSelectedListener(this);
+
     FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
     HomeFragment homeFragment = new HomeFragment();
     transaction.replace(R.id.container1, homeFragment).addToBackStack("home").commit();
+
   }
 
   @Override
@@ -107,6 +116,8 @@ public class MainActivity extends AppCompatActivity
     getSupportFragmentManager().beginTransaction().replace(R.id.container1, fragment)
         .addToBackStack("home").commit();
   }
+
+
 }
 
 

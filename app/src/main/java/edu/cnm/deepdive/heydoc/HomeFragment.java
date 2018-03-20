@@ -15,7 +15,11 @@ import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import com.google.api.services.calendar.model.Event;
+import edu.cnm.deepdive.heydoc.adapter.EventAdapter;
 import edu.cnm.deepdive.heydoc.models.Appointment;
+import edu.cnm.deepdive.heydoc.service.CalendarService;
+import edu.cnm.deepdive.heydoc.service.CalendarService.Callback;
 import java.util.List;
 
 public class HomeFragment extends Fragment {
@@ -24,6 +28,7 @@ public class HomeFragment extends Fragment {
   private ListView cancel;
   private Button yesButton;
   private Button noButton;
+  private CalendarService calendarService;
 
   public HomeFragment() {
 
@@ -36,7 +41,7 @@ public class HomeFragment extends Fragment {
     appt = view.findViewById(R.id.appt_list);
     cancel = view.findViewById(R.id.cancel_list);
 
-    updateDisplay(view);
+//    updateDisplay(view);
 
     FloatingActionButton spendingAdd = view.findViewById(R.id.stats_button);
     spendingAdd.setOnClickListener(new OnClickListener() {
@@ -57,32 +62,54 @@ public class HomeFragment extends Fragment {
       }
     });
 
+    calendarService = new CalendarService();
+    FragmentTransaction transaction = getFragmentManager().beginTransaction();
+    transaction.add(calendarService, calendarService.getClass().getSimpleName()).commit();
+
+
     return view;
+  }
+
+  @Override
+  public void onStart() {
+    super.onStart();
+    calendarService.getEventsTask(new Callback() {
+      @Override
+      public void handle(List<Event> events) {
+        EventAdapter adapter = new EventAdapter(getActivity(),events);
+        appt.setAdapter(adapter);
+      }
+
+      @Override
+      public void cancel(Exception exception) {
+
+      }
+    }).execute();
   }
 
   private void updateDisplay(View view) {
 
-    new Thread(new Runnable() {
-      @Override
-      public void run() {
-        List<Appointment> appointments = UniDatabase.getInstance(getContext()).appointmentDao()
-            .getSet();
-        List<Appointment> cancelledAppointments = UniDatabase.getInstance(getContext())
-            .appointmentDao()
-            .getCancelled();
-        final ArrayAdapter<Appointment> setAdapter = new ArrayAdapter<>(getActivity(),
-            android.R.layout.simple_list_item_1, appointments);
-        final ArrayAdapter<Appointment> cancelledAdapter = new ArrayAdapter<>(getActivity(),
-            android.R.layout.simple_list_item_1, cancelledAppointments);
-        getActivity().runOnUiThread(new Runnable() {
-          @Override
-          public void run() {
-            appt.setAdapter(setAdapter);
-            cancel.setAdapter(cancelledAdapter);
-          }
-        });
-      }
-    }).start();
+//    new Thread(new Runnable() {
+//      @Override
+//      public void run() {
+//        List<Appointment> appointments = UniDatabase.getInstance(getContext()).appointmentDao()
+//            .getSet();
+//        List<Appointment> cancelledAppointments = UniDatabase.getInstance(getContext())
+//            .appointmentDao()
+//            .getCancelled();
+//        final ArrayAdapter<Appointment> setAdapter = new ArrayAdapter<>(getActivity(),
+//            android.R.layout.simple_list_item_1, appointments);
+//        final ArrayAdapter<Appointment> cancelledAdapter = new ArrayAdapter<>(getActivity(),
+//            android.R.layout.simple_list_item_1, cancelledAppointments);
+//        getActivity().runOnUiThread(new Runnable() {
+//          @Override
+//          public void run() {
+//            appt.setAdapter(setAdapter);
+//            cancel.setAdapter(cancelledAdapter);
+//          }
+//        });
+//      }
+//    }).start();
   }
 
   private class AppointmentDialog {

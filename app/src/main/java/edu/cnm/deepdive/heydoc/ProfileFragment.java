@@ -13,7 +13,7 @@ import android.widget.CalendarView.OnDateChangeListener;
 import android.widget.RatingBar;
 import android.widget.RatingBar.OnRatingBarChangeListener;
 import edu.cnm.deepdive.heydoc.models.Practitioner;
-import edu.cnm.deepdive.heydoc.models.Profile;
+
 
 public class ProfileFragment extends Fragment {
 

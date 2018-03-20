@@ -13,7 +13,6 @@ import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.text.method.ScrollingMovementMethod;
 import android.view.View;
@@ -58,7 +57,7 @@ import pub.devrel.easypermissions.EasyPermissions;
 
     private static final String BUTTON_TEXT = "Call Google Calendar API";
     private static final String PREF_ACCOUNT_NAME = "accountName";
-    private static final String[] SCOPES = { CalendarScopes.CALENDAR_READONLY };
+    private static final String[] SCOPES = {CalendarScopes.CALENDAR };
 
     /**
      * Create the main activity.
@@ -129,7 +128,7 @@ import pub.devrel.easypermissions.EasyPermissions;
       } else if (! isDeviceOnline()) {
         mOutputText.setText("No network connection available.");
       } else {
-        new MakeRequestTask(mCredential).execute();
+        new GetEventsTask(mCredential).execute();
       }
     }
 
@@ -316,11 +315,11 @@ import pub.devrel.easypermissions.EasyPermissions;
      * An asynchronous task that handles the Google Calendar API call.
      * Placing the API calls in their own task ensures the UI stays responsive.
      */
-    private class MakeRequestTask extends AsyncTask<Void, Void, List<String>> {
+    public class GetEventsTask extends AsyncTask<Void, Void, List<String>> {
       private com.google.api.services.calendar.Calendar mService = null;
       private Exception mLastError = null;
 
-      MakeRequestTask(GoogleAccountCredential credential) {
+      GetEventsTask(GoogleAccountCredential credential) {
         HttpTransport transport = AndroidHttp.newCompatibleTransport();
         JsonFactory jsonFactory = JacksonFactory.getDefaultInstance();
         mService = new com.google.api.services.calendar.Calendar.Builder(

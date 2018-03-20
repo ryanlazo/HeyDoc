@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  xmlns:app="http://schemas.android.com/apk/res-auto"
+  android:orientation="horizontal"
+  android:layout_width="match_parent"
+  android:layout_height="wrap_content">
+
+  <TextView
+    android:id="@+id/start_date"
+    android:layout_width="100dp"
+    android:layout_height="wrap_content"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintLeft_toLeftOf="parent"
+    />
+
+  <TextView
+    android:id="@+id/start_time"
+    android:layout_width="60dp"
+    android:layout_height="wrap_content"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintLeft_toRightOf="@id/start_date"
+    />
+
+  <TextView
+    android:id="@+id/dash_time"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text=" - "
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintLeft_toRightOf="@id/start_time"
+    />
+
+  <TextView
+    android:id="@+id/end_time"
+    android:layout_width="80dp"
+    android:layout_height="wrap_content"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintLeft_toRightOf="@id/dash_time"/>
+
+
+  <TextView
+    android:id="@+id/summary_event"
+    android:layout_width="100dp"
+    android:layout_height="wrap_content"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintLeft_toRightOf="@id/end_time"/>
+
+  <TextView
+    android:id="@+id/state_event"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:layout_constraintTop_toBottomOf="@id/summary_event"
+    app:layout_constraintLeft_toLeftOf="@id/summary_event"/>
+
+
+
+
+
+</android.support.constraint.ConstraintLayout>
