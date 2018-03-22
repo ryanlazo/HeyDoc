@@ -20,7 +20,7 @@ public class TimeListAdapter extends ArrayAdapter<ScheduleItem> {
     ScheduleItem scheduleItem = getItem(position);
     TextView view = (TextView) LayoutInflater.from(getContext())
         .inflate(android.R.layout.simple_list_item_1, parent, false);
-    view.setText(scheduleItem.getTime());
+    view.setText(scheduleItem.toString());
     if (scheduleItem.isBooked()) {
       view.setBackgroundColor(Color.RED);
     }

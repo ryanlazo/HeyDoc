@@ -15,7 +15,6 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.api.client.extensions.android.http.AndroidHttp;
@@ -25,11 +24,13 @@ import com.google.api.client.json.JsonFactory;
 import com.google.api.client.json.jackson2.JacksonFactory;
 import com.google.api.client.util.DateTime;
 import com.google.api.client.util.ExponentialBackOff;
+import com.google.api.services.calendar.Calendar;
 import com.google.api.services.calendar.CalendarScopes;
 import com.google.api.services.calendar.model.Event;
 import com.google.api.services.calendar.model.Events;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
 import pub.devrel.easypermissions.AfterPermissionGranted;
 import pub.devrel.easypermissions.EasyPermissions;
@@ -68,6 +69,11 @@ public class CalendarService extends Fragment implements EasyPermissions.Permiss
 
   public GetEventsTask getEventsTask(Callback callback) {
     return new GetEventsTask(callback);
+  }
+
+
+  public GetDayTasks getDayTasks(Callback callback, Date date) {
+    return new GetDayTasks(callback, date);
   }
   /**
    * Attempt to call the API, after verifying that all the preconditions are
@@ -272,6 +278,8 @@ public class CalendarService extends Fragment implements EasyPermissions.Permiss
     private com.google.api.services.calendar.Calendar service = null;
     private Exception lastException = null;
     private Callback callback;
+    private Calendar calendarId;
+    private Event eventId;
 
     public GetEventsTask(Callback callback) {
       this.callback = callback;
@@ -326,11 +334,89 @@ public class CalendarService extends Fragment implements EasyPermissions.Permiss
     }
 
     @Override
-    protected void onCancelled() {
+    protected void onCancelled()  {
       callback.cancel(lastException);
     }
 
   }
+
+  public class GetDayTasks extends AsyncTask<Void, Void, List<Event>> {
+
+    private com.google.api.services.calendar.Calendar service = null;
+    private Exception lastException = null;
+    private Callback callback;
+    private Calendar calendarId;
+    private Event eventId;
+    private Date date;
+
+    public GetDayTasks(Callback callback, Date date) {
+      this.callback = callback;
+      this.date = date;
+      HttpTransport transport = AndroidHttp.newCompatibleTransport();
+      JsonFactory jsonFactory = JacksonFactory.getDefaultInstance();
+      service = new com.google.api.services.calendar.Calendar.Builder(
+          transport, jsonFactory, credential)
+          .setApplicationName("Google Calendar API Android Quickstart")
+          .build();
+    }
+
+    /**
+     * Background task to call Google Calendar API.
+     * @param params no parameters needed for this task.
+     */
+    @Override
+    protected List<Event> doInBackground(Void... params) {
+      try {
+        return getDataFromApi();
+      } catch (Exception e) {
+        lastException = e;
+        cancel(true);
+        return null;
+      }
+    }
+
+    /**
+     * Fetch a list of the next 10 events from the primary calendar.
+     * @return List of Strings describing returned events.
+     * @throws IOException
+     */
+    private List<Event> getDataFromApi() throws IOException {
+      // List the next 10 events from the primary calendar.
+      Date today = new Date(date.getTime());
+      today.setHours(0);
+      today.setMinutes(0);
+      today.setSeconds(0);
+      DateTime start = new DateTime(today.getTime());
+      DateTime end = new DateTime(today.getTime() + 24 * 60 * 60 * 1000);
+
+      Events events = service.events().list("primary")
+          .setMaxResults(99)
+          .setTimeMin(start)
+          .setTimeMax(end)
+          .setOrderBy("startTime")
+          .setSingleEvents(true)
+          .execute();
+      List<Event> items = events.getItems();
+
+      return items;
+    }
+
+
+    @Override
+    protected void onPostExecute(List<Event> events) {
+      callback.handle(events);
+
+    }
+
+    @Override
+    protected void onCancelled()  {
+      callback.cancel(lastException);
+    }
+
+  }
+
+
+
 
   public interface Callback {
     void handle(List <Event> events);
