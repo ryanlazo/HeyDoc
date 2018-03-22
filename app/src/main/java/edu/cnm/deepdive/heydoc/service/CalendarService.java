@@ -19,6 +19,9 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.GoogleApiAvailability;
 import com.google.api.client.extensions.android.http.AndroidHttp;
 import com.google.api.client.googleapis.extensions.android.gms.auth.GoogleAccountCredential;
+import com.google.api.client.http.GenericUrl;
+import com.google.api.client.http.HttpRequest;
+import com.google.api.client.http.HttpRequestFactory;
 import com.google.api.client.http.HttpTransport;
 import com.google.api.client.json.JsonFactory;
 import com.google.api.client.json.jackson2.JacksonFactory;
@@ -27,11 +30,14 @@ import com.google.api.client.util.ExponentialBackOff;
 import com.google.api.services.calendar.Calendar;
 import com.google.api.services.calendar.CalendarScopes;
 import com.google.api.services.calendar.model.Event;
+import com.google.api.services.calendar.model.EventDateTime;
 import com.google.api.services.calendar.model.Events;
+import edu.cnm.deepdive.heydoc.adapter.EventAdapter;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
+import java.util.Map.Entry;
 import pub.devrel.easypermissions.AfterPermissionGranted;
 import pub.devrel.easypermissions.EasyPermissions;
 
@@ -74,6 +80,10 @@ public class CalendarService extends Fragment implements EasyPermissions.Permiss
 
   public GetDayTasks getDayTasks(Callback callback, Date date) {
     return new GetDayTasks(callback, date);
+  }
+
+  public CreateEventTask createEventTask(Callback callback) {
+    return new CreateEventTask(callback);
   }
   /**
    * Attempt to call the API, after verifying that all the preconditions are
@@ -281,6 +291,7 @@ public class CalendarService extends Fragment implements EasyPermissions.Permiss
     private Calendar calendarId;
     private Event eventId;
 
+
     public GetEventsTask(Callback callback) {
       this.callback = callback;
       HttpTransport transport = AndroidHttp.newCompatibleTransport();
@@ -349,6 +360,7 @@ public class CalendarService extends Fragment implements EasyPermissions.Permiss
     private Event eventId;
     private Date date;
 
+
     public GetDayTasks(Callback callback, Date date) {
       this.callback = callback;
       this.date = date;
@@ -408,6 +420,78 @@ public class CalendarService extends Fragment implements EasyPermissions.Permiss
 
     }
 
+
+    @Override
+    protected void onCancelled()  {
+      callback.cancel(lastException);
+    }
+
+  }
+
+  public class CreateEventTask extends AsyncTask<Date, Void, Void> {
+
+    private com.google.api.services.calendar.Calendar service = null;
+    private Exception lastException = null;
+    private Callback callback;
+    private Calendar calendarId;
+    private Event eventId;
+    private Date date;
+
+
+    public CreateEventTask(Callback callback) {
+      this.callback = callback;
+      this.date = date;
+      HttpTransport transport = AndroidHttp.newCompatibleTransport();
+      JsonFactory jsonFactory = JacksonFactory.getDefaultInstance();
+      service = new com.google.api.services.calendar.Calendar.Builder(
+          transport, jsonFactory, credential)
+          .setApplicationName("Google Calendar API Android Quickstart")
+          .build();
+    }
+
+    /**
+     * Background task to call Google Calendar API.
+     */
+    @Override
+    protected Void doInBackground(Date... dates) {
+      try {
+        sendEventToAPI(dates[0], dates[1]);
+      } catch (Exception e) {
+        lastException = e;
+        cancel(true);
+
+      }
+      return null;
+    }
+
+    /**
+     * Fetch a list of the next 10 events from the primary calendar.
+     * @return List of Strings describing returned events.
+     * @throws IOException
+     */
+    private void sendEventToAPI(Date startDate, Date endDate) throws IOException {
+      Event event = new Event();
+      EventDateTime eventStart = new EventDateTime();
+      EventDateTime eventEnd = new EventDateTime();
+      eventStart.setDateTime(new DateTime(startDate));
+      eventEnd.setDateTime(new DateTime(endDate));
+
+      event.setStart(eventStart);
+      event.setEnd(eventEnd);
+      event.setSummary("test");
+//      event.setStatus("request");
+     Event execEvent = service.events().insert("primary", event).execute();
+
+    }
+
+
+    @Override
+    protected void onPostExecute(Void ignore) {
+      callback.handle(null);
+
+    }
+
+
     @Override
     protected void onCancelled()  {
       callback.cancel(lastException);
@@ -417,10 +501,11 @@ public class CalendarService extends Fragment implements EasyPermissions.Permiss
 
 
 
-
   public interface Callback {
     void handle(List <Event> events);
     void cancel(Exception exception);
   }
+
+
 
 }

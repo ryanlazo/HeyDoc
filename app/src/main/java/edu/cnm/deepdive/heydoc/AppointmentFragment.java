@@ -6,6 +6,7 @@ import android.app.AlertDialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -195,30 +196,37 @@ public class AppointmentFragment extends Fragment {
             public void run() {
               Bundle args = getArguments();
               Calendar calendar = Calendar.getInstance();
-              calendar.set(args.getInt("year"), args.getInt("month"), args.getInt("day"), 0, 0, 0);
-              SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
+              calendar.setTimeInMillis(adapter.getItem(position).getTime());
+              Date startDate = new Date(calendar.getTimeInMillis());
+              calendar.add(Calendar.MINUTE, 30);
+              Date endDate = new Date(calendar.getTimeInMillis());
+//              appointment.setPractionerId(1); //TODO CHANGE THIS YOU LAZY ***
+//              switch (apptSpinner.getSelectedItem().toString()) {
+//                case "Regular cleaning - 30 minutes":
+//                  appointment.setDuration(30);
+//                  break;
+//                case "Cavity Repair - 1 hour":
+//                  appointment.setDuration(60);
+//                  break;
+//                case "New Patient - 1 hour 30 minutes":
+//                  appointment.setDuration(90);
+//                  break;
+//                case "Root Canal - 1 hour 30 minutes":
+//                  appointment.setDuration(90);
+//                  break;
+//              }
+//              UniDatabase.getInstance(getContext()).appointmentDao().insert(appointment);
+              calendarService.createEventTask(new Callback() {
+                @Override
+                public void handle(List<Event> events) {
+                  Log.d("calendar service", "event created");
+                }
 
-              Date time = new Date(adapter.getItem(position).getTime());
-              calendar.add(Calendar.MILLISECOND, (int) time.getTime());
+                @Override
+                public void cancel(Exception exception) {
 
-              Appointment appointment = new Appointment();
-              appointment.setDate(calendar.getTime());
-              appointment.setPractionerId(1); //TODO CHANGE THIS YOU LAZY ***
-              switch (apptSpinner.getSelectedItem().toString()) {
-                case "Regular cleaning - 30 minutes":
-                  appointment.setDuration(30);
-                  break;
-                case "Cavity Repair - 1 hour":
-                  appointment.setDuration(60);
-                  break;
-                case "New Patient - 1 hour 30 minutes":
-                  appointment.setDuration(90);
-                  break;
-                case "Root Canal - 1 hour 30 minutes":
-                  appointment.setDuration(90);
-                  break;
-              }
-              UniDatabase.getInstance(getContext()).appointmentDao().insert(appointment);
+                }
+              }).execute(startDate, endDate);
             }
           }).start();
           showToast();

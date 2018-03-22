@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 import com.google.api.client.util.DateTime;
+import com.google.api.services.calendar.Calendar;
 import com.google.api.services.calendar.model.Event;
 import edu.cnm.deepdive.heydoc.R;
 import java.util.Date;
@@ -22,6 +23,7 @@ public class EventAdapter extends ArrayAdapter<Event> {
     super(context, RESOURCE_ID, objects);
     this.context = context;
   }
+
 
   @Override
   public View getView(int position, View convertView, ViewGroup parent) {
@@ -43,6 +45,12 @@ public class EventAdapter extends ArrayAdapter<Event> {
     summaryEvent.setText(event.getSummary());
     stateEvent.setText(event.getStatus());
 
+
+    Calendar service = new Calendar.Builder(httpTransport, jsonFactory, credentials)
+      .setApplicationName("applicationName").build();
+  service.events().delete(calendarID, "eventID").execute();
     return item;
   }
+
+
 }

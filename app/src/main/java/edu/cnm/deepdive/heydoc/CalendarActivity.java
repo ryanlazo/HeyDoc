@@ -27,6 +27,7 @@ import com.google.api.client.extensions.android.http.AndroidHttp;
 import com.google.api.client.googleapis.extensions.android.gms.auth.GoogleAccountCredential;
 import com.google.api.client.googleapis.extensions.android.gms.auth.GooglePlayServicesAvailabilityIOException;
 import com.google.api.client.googleapis.extensions.android.gms.auth.UserRecoverableAuthIOException;
+import com.google.api.client.googleapis.services.AbstractGoogleClientRequest;
 import com.google.api.client.http.HttpTransport;
 import com.google.api.client.json.JsonFactory;
 import com.google.api.client.json.jackson2.JacksonFactory;
@@ -411,6 +412,16 @@ import pub.devrel.easypermissions.EasyPermissions;
           mOutputText.setText("Request cancelled.");
         }
       }
+
     }
+
+//    private delete(calendarId, eventId) {
+//
+//    }
+//    AbstractGoogleClientRequest.execute(){
+//
+//    }
+
+
   }
 
