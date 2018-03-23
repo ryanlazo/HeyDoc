@@ -34,6 +34,17 @@ public class HomeFragment extends Fragment {
 
   }
 
+  /**
+   * the onCreateView inflates the elements of the home page including the list of scheduled appointments
+   * and the list of cancelled appointments. It also contains a FloatingActionButton that populates the
+   * users basic health statistics. The onClick and onItemClick methods of this class contain the information
+   * of the FloatingActionButton from the onCreateView method. the onItemClick method calls the HomeFragment
+   * and returns a view.
+   * @param inflater layout inflater for the home fragment
+   * @param container ViewGroup class
+   * @param savedInstanceState bundle
+   * @return view
+   */
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
       Bundle savedInstanceState) {
@@ -70,6 +81,10 @@ public class HomeFragment extends Fragment {
     return view;
   }
 
+  /**
+   * the onStart method and the corresponding EventAdapter wire-in the calendarService and allow us to
+   * reference them when needed. The cancel method handles any cancelled appointments and executes the code.
+   */
   @Override
   public void onStart() {
     super.onStart();

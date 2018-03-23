@@ -16,6 +16,12 @@ public class LoginActivity extends Activity {
   TextView tx1;
   int counter = 3;
 
+  /**
+   * this onCreate method allows for the editing of each button within the navigation bar drop down.
+   * It also sets the parameters for the log in page which requires a username and a password. If
+   * the user types in the wrong username and password they receive a Toast "Wrong Credentials"
+   * @param savedInstanceState refers to the super.onCreate
+   */
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);

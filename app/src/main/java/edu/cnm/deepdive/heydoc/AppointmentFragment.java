@@ -31,6 +31,10 @@ import java.util.Date;
 import java.util.List;
 import java.util.TimeZone;
 
+/**
+ * This is the AppointmentFragment class that extends Fragment. It contains several private fields
+ * that help set the parameters for each appointment time and what happens when it is clicked.
+ */
 public class AppointmentFragment extends Fragment {
 
   private List<ScheduleItem> times;
@@ -46,6 +50,13 @@ public class AppointmentFragment extends Fragment {
   private int day;
   private Calendar calendar;
 
+  /**
+   * establishes argument parameters for day, month and year and assigns it to an appointment
+   * @param year sets the year
+   * @param month sets the month
+   * @param day sets the day
+   * @return fragment
+   */
   public static AppointmentFragment newInstance(int year, int month, int day) {
     Bundle args = new Bundle();
     args.putInt("year", year);
@@ -56,10 +67,19 @@ public class AppointmentFragment extends Fragment {
     return fragment;
   }
 
+  /**
+   * empty parameter constructor for AppointmentFragment
+   */
   public AppointmentFragment() {
 
   }
 
+  /**
+   * the onCreate method passes a bundle of arguments assigned to a day, month and year. Then it sets
+   * a calendar object and sets the calendar to whatever the current day is. Whenever onCreate is
+   * invoked the day will either change or stay the same based on the what day it is.
+   * @param savedInstanceState saves the instance based on the day
+   */
   @Override
   public void onCreate(@Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -75,6 +95,14 @@ public class AppointmentFragment extends Fragment {
     getFragmentManager().beginTransaction().add(calendarService, "Calendar Service Today").commit();
   }
 
+  /**
+   * the onCreateView method sets a view object and when it gets invoked it inflates the appointment
+   * fragment layout. the timeList finds the view by ID and returns a view.
+   * @param inflater inflates the layout
+   * @param container class of ViewGroup
+   * @param savedInstanceState saves the bundle
+   * @return view
+   */
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
       Bundle savedInstanceState) {
@@ -83,6 +111,10 @@ public class AppointmentFragment extends Fragment {
     return view;
   }
 
+  /**
+   * sets the hours, seconds and minutes for the date object and calls the getDayTasks method to
+   * retrieve the events listed for that day.
+   */
   @Override
   public void onStart() {
     super.onStart();
@@ -92,6 +124,15 @@ public class AppointmentFragment extends Fragment {
     date.setMinutes(0);
     date.setSeconds(0);
     calendarService.getDayTasks(new Callback() {
+
+      /**
+       * uses a for loop to iterate through the scheduled items based on the number of seconds in
+       * millis, minutes, and hours. Assigns a value to determine the start and end times for an
+       * event. An if statement is used to determine whether the appointment time has already been
+       * booked or not. Finally, the handle method utilizes the TimeListAdapter and the onItemClick
+       * Listener.
+       * @param events list of events for that day.
+       */
       @Override
       public void handle(List<Event> events) {
         times = new ArrayList<>();
@@ -116,6 +157,15 @@ public class AppointmentFragment extends Fragment {
             android.R.layout.simple_list_item_1, times);
         timeList.setAdapter(adapter);
         timeList.setOnItemClickListener(new OnItemClickListener() {
+
+          /**
+           * this is the onItemClick used during the onItemClickListener. It sets the appointmentDialog
+           * and passes a position parameter.
+           * @param parent parent
+           * @param view view for the onItemClick
+           * @param position position represented as an int
+           * @param id id displayed as a long
+           */
           @Override
           public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
             AppointmentDialog appointmentDialog = new AppointmentDialog();

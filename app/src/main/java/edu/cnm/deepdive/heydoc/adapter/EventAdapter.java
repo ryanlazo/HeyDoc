@@ -19,12 +19,24 @@ public class EventAdapter extends ArrayAdapter<Event> {
   private static final int RESOURCE_ID = R.layout.event_item;
   private Context context;
 
+  /**
+   * Adapter that allows us to use context and objects as parameters for an Event on the calendar.
+   * @param context
+   * @param objects
+   */
   public EventAdapter(Context context, List<Event> objects) {
     super(context, RESOURCE_ID, objects);
     this.context = context;
   }
 
-
+  /**
+   * this method gets the view for the event adapter. The startDate, endDate, startTime, summaryEvent
+   * and stateEvent are retrieved from the XML and displayed in a TextView. 
+   * @param position as an int
+   * @param convertView converts the view
+   * @param parent from the the ViewGroup class
+   * @return item
+   */
   @Override
   public View getView(int position, View convertView, ViewGroup parent) {
     View item = LayoutInflater.from(context).inflate(RESOURCE_ID, null);
