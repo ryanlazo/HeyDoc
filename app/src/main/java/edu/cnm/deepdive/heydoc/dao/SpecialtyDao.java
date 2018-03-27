@@ -6,8 +6,19 @@ import android.arch.persistence.room.Query;
 import edu.cnm.deepdive.heydoc.models.Specialty;
 import java.util.List;
 
+/**
+ * Data access object (Dao) of the <code>Specialty</code> entity.
+ *
+ * @author Ryan Lazo
+ */
+
 @Dao
 public interface SpecialtyDao {
+
+  /**
+   * Query that retrieves data from the <code>Specialty</code>
+   * @return a list of the Specialty
+   */
 
   @Query("SELECT * FROM Specialty")
   List<Specialty> getAll();

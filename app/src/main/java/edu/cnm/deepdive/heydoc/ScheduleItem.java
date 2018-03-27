@@ -4,6 +4,10 @@ import android.content.Context;
 import android.text.format.DateFormat;
 import java.util.Date;
 
+/**
+ * The ScheduleItem class establishes the parameters for an appointment. It sets whether the appointment
+ * has been booked or not and then returns the date in a string format based on the results.
+ */
 public class ScheduleItem {
 
   private Context context;

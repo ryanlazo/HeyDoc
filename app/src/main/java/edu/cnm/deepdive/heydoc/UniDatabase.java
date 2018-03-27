@@ -20,6 +20,9 @@ import edu.cnm.deepdive.heydoc.models.Schedule;
 import edu.cnm.deepdive.heydoc.models.Specialty;
 import java.util.concurrent.Executors;
 
+/**
+ * The Database implements the series of Dao classes.
+ */
 @Database(entities = {Account.class, Appointment.class, Practitioner.class,
     Schedule.class, Specialty.class, Profile.class}, version = 1)
 public abstract class UniDatabase extends RoomDatabase {

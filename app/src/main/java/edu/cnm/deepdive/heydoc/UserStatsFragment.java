@@ -12,7 +12,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import edu.cnm.deepdive.heydoc.models.Account;
 
-
+/**
+ * The UserStatsFragment utilizes a FloatingAction Button to access its contents. The fragment
+ * consists of the users basic health statistics including height, weight, blood pressure, heart rate,
+ * respiratory rate, and age. This information can be edited by any medical professional based on
+ * their latest appointment.
+ */
 public class UserStatsFragment extends Fragment implements TextWatcher{
 
   private EditText ageEdit;

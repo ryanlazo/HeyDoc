@@ -9,6 +9,11 @@ import android.arch.persistence.room.Update;
 import edu.cnm.deepdive.heydoc.models.Practitioner;
 import java.util.List;
 
+  /**
+    * Data access object (Dao) of the <code>Practitioner</code> entity.
+    *
+    * @author Ryan Lazo
+    */
 
 @Dao
 public interface PractitionerDao {

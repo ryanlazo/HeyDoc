@@ -5,6 +5,10 @@ import android.arch.persistence.room.ColumnInfo;
 import android.arch.persistence.room.Entity;
 import android.arch.persistence.room.PrimaryKey;
 
+/**
+ * The <code>Specialty</code> class defines the parameters for populating and displaying the specialty
+ * data. This includes the specialty name and the specialty ID.
+ */
 @Entity
 public class Specialty {
 
@@ -40,6 +44,11 @@ public class Specialty {
     this.specialtyName = specialtyName;
   }
 
+  /**
+   * The populateData method implements a series of Specialties that will display in alphabetical order.
+   * The table is tied in to the database so it can be altered.
+   * @return specialtyName
+   */
   public static Specialty[] populateData() {
     return new Specialty[]{
         new Specialty("Allergy"),

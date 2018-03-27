@@ -43,7 +43,11 @@ import java.util.List;
 import pub.devrel.easypermissions.AfterPermissionGranted;
 import pub.devrel.easypermissions.EasyPermissions;
 
-
+/**
+ * The <code>CalendarActivity</code> class extends the Activity class and sets the parameters for the
+ * calendar. The Google Calendar API is called and used to populate the data on the users home screen
+ *
+ */
   public class CalendarActivity extends Activity
       implements EasyPermissions.PermissionCallbacks {
     GoogleAccountCredential mCredential;
@@ -60,10 +64,6 @@ import pub.devrel.easypermissions.EasyPermissions;
     private static final String PREF_ACCOUNT_NAME = "accountName";
     private static final String[] SCOPES = {CalendarScopes.CALENDAR };
 
-    /**
-     * Create the main activity.
-     * @param savedInstanceState previously saved instance data.
-     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
       super.onCreate(savedInstanceState);

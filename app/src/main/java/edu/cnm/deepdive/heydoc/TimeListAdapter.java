@@ -9,6 +9,12 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 import java.util.List;
 
+/**
+ * The TimeList adapter is used primarily to change the background color of the practitioners
+ * schedule based on whether the appointment has been booked or not. If the appointment has been
+ * booked the block of time will turn red. We return the view.
+ */
+
 public class TimeListAdapter extends ArrayAdapter<ScheduleItem> {
 
   public TimeListAdapter(Context context, int resource, List<ScheduleItem> strings) {

@@ -14,6 +14,13 @@ public class Practitioner {
 
   }
 
+  /**
+   * The <code>Practitioner</code> class establishes the parameters for the practitioner data. It is
+   * displayed by the Id, lastname, firstname and location. You can also display the practitioner
+   * rating and whether or not you want to favorite this Doctor.
+   * @param practitionerName String of names
+   * @param specialtyId Id established by position in the array
+   */
   public Practitioner(String practitionerName, long specialtyId) {
     this.specialtyId = specialtyId;
     this.practitionerName = practitionerName;
@@ -109,6 +116,12 @@ public class Practitioner {
     this.rating = rating;
   }
 
+  /**
+   * The <code>Practitioner</code> array establishes how to display the practitioner data. The data
+   * is populated by lastname, firstname and specialty id which is taken from the specialty class. The
+   * id number is determined by its position in specialty array.
+   * @return practitionerName
+   */
   public static Practitioner[] populateData() {
     return new Practitioner[]{
         new Practitioner("Abernathy, Katherine", 1),

@@ -8,6 +8,10 @@ import android.arch.persistence.room.TypeConverters;
 import edu.cnm.deepdive.heydoc.models.Appointment.Converters;
 import java.util.Date;
 
+/**
+ * The <code>Schedule</code> class utilizes the Date class to populate data necessary for allowing
+ * the user to schedule an appointment. The parameters are established here by the date and id.
+ */
 @Entity
 @TypeConverters(Converters.class)
 public class Schedule {
@@ -18,6 +22,10 @@ public class Schedule {
   @ColumnInfo(name = "date")
   private Date date;
 
+  /**
+   * The <code>Converters</code> class takes the values from above and uses them to set a dateTimeStamp.
+   * It returns a date object.
+   */
   public static class Converters {
 
     @TypeConverter

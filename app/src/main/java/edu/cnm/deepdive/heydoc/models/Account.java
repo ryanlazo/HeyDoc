@@ -9,6 +9,11 @@ import android.arch.persistence.room.TypeConverters;
 import edu.cnm.deepdive.heydoc.models.Appointment.Converters;
 import java.util.Date;
 
+/**
+ * The <code>Account</code> class is used for the users account information. It displays the lastname,
+ * firstname of the user, and displays whether they have a scheduled appointment or if they recently
+ * cancelled any. In the floating action button it displays the users basic health statistics
+ */
 @Entity
 @TypeConverters(Converters.class)
 public class Account {
@@ -70,6 +75,16 @@ public class Account {
 
   }
 
+  /**
+   * This is the users basic health statistics data. It can be changed and populated by any Doctor
+   * and displayed for user to review.
+   * @param age in int
+   * @param height as a double
+   * @param weight as a double
+   * @param bp as an int
+   * @param rr as an int
+   * @param hr as an int
+   */
   public Account(int age, double height, double weight, int bp, int rr, int hr) {
     this.age = age;
     this.height = height;
@@ -175,6 +190,10 @@ public class Account {
     this.cancelledAppointments = cancelledAppointments;
   }
 
+  /**
+   * This is a sample of user statistics that is hard-coded for the presentation
+   * @return user statistics.
+   */
   public static Account[] populateData() {
     return new Account[]{
       new Account(30, 5.10, 150.0, 117, 13, 86)

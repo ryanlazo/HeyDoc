@@ -9,6 +9,11 @@ import android.arch.persistence.room.Update;
 import edu.cnm.deepdive.heydoc.models.Appointment;
 import java.util.List;
 
+/**
+    * Data access object (Dao) of the <code>Appointment</code> entity.
+    *
+    * @author Ryan Lazo
+    */
 @Dao
 public interface AppointmentDao {
 

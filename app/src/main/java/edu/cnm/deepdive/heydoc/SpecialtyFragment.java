@@ -12,6 +12,12 @@ import android.widget.ListView;
 import edu.cnm.deepdive.heydoc.models.Specialty;
 import java.util.List;
 
+/**
+ * The SpecialtyFragment sets the parameters for the list of Specialists and inflates that fragment.
+ * Each Specialist has designated ID from the database so they are easily and exclusively selected by
+ * the user.
+ */
+
 public class SpecialtyFragment extends Fragment {
 
   private ListView specialty;

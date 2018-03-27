@@ -15,6 +15,12 @@ public class Profile {
 
   }
 
+  /**
+   * The <code>Profile</code> class sets several parameters for displaying a Doctor's profile. Id,
+   * name and location are all used to define specific profile pages for each Doctor.
+   * @param Name String of names
+   * @param specialtyId defined as a long in this method.
+   */
   public Profile(String Name, long specialtyId) {
     this.specialtyId = specialtyId;
     this.practitionerName = practitionerName;
@@ -87,6 +93,10 @@ public class Profile {
     this.practitionerName = practitionerName;
   }
 
+  /**
+   * The <code>Practitioner</code> method links the profile data to the practitioner data
+   * @return practitionerName
+   */
   public static Practitioner[] populateData() {
     return new Practitioner[]{
         new Practitioner("Abernathy, Katherine", 1),

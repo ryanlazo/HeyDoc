@@ -9,6 +9,10 @@ import android.arch.persistence.room.TypeConverters;
 import edu.cnm.deepdive.heydoc.models.Appointment.Converters;
 import java.util.Date;
 
+/**
+ * The <code>Appointment</code> class has several identifying columns including date, duration,
+ * practitioner ID, and if the appointment is cancelled or not.
+ */
 @Entity(foreignKeys = @ForeignKey(entity = Practitioner.class,
     parentColumns = "id", childColumns = "practitioner_id"))
 @TypeConverters(Converters.class)
@@ -29,6 +33,10 @@ public class Appointment {
   @ColumnInfo(name = "is_cancelled")
   private int isCancelled;
 
+  /**
+   * The Converters class takes TimeStamp and determines whether an appointment has been booked. If
+   * an appointment has been booked then it displays the date and time of that appointment.
+   */
   public static class Converters {
 
     @TypeConverter
@@ -86,6 +94,10 @@ public class Appointment {
     this.isCancelled = isCancelled;
   }
 
+  /**
+   * When an appointment has been booked
+   * @return date and duration
+   */
   @Override
   public String toString() {
     return date + " for " + duration + " minutes";

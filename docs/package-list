@@ -1,0 +1,5 @@
+edu.cnm.deepdive.heydoc
+edu.cnm.deepdive.heydoc.adapter
+edu.cnm.deepdive.heydoc.dao
+edu.cnm.deepdive.heydoc.models
+edu.cnm.deepdive.heydoc.service

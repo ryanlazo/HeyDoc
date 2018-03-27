@@ -18,11 +18,16 @@ import edu.cnm.deepdive.heydoc.service.CalendarService.Callback;
 import edu.cnm.deepdive.heydoc.service.CalendarService.GetEventsTask;
 import java.util.List;
 
+/**
+ * The <code>MainActivity</code> class utilizes the toolbar features and establishes a home fragment
+ * that allows the user to access the home screen from the navigation drawer.
+ */
 public class MainActivity extends AppCompatActivity
     implements NavigationView.OnNavigationItemSelectedListener {
 
   private static UniDatabase database;
   private CalendarService calendarService;
+
 
 
   @Override
@@ -101,13 +106,12 @@ public class MainActivity extends AppCompatActivity
     return true;
   }
 
-  public UniDatabase getDatabase(Context context) {
-    if (database == null) {
-      database = UniDatabase.getInstance(context);
-    }
-    return database;
-
-  }
+  /**
+   * loadFragment method loads the resource bundle and commits the transaction for the list of options
+   * in the navigation drawer menu.
+   * @param fragment fragment to load
+   * @param bundle bundle to load
+   */
 
   public void loadFragment(Fragment fragment, Bundle bundle) {
     if (bundle != null) {

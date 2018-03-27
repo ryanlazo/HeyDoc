@@ -10,12 +10,25 @@ import edu.cnm.deepdive.heydoc.models.Account;
 import edu.cnm.deepdive.heydoc.models.Specialty;
 import java.util.List;
 
+/**
+ * Data access object (Dao) of the <code>Account</code> entity.
+ *
+ * @author Ryan Lazo
+ */
 @Dao
 public interface AccountDao {
 
+  /**
+   * Query that retrieves data from the <code>Account</code>
+   * @return a list of the Account
+   */
   @Query("SELECT * FROM Account")
   List<Account> getAll();
 
+  /**
+   * l
+   * @return
+   */
   @Query("SELECT * FROM account WHERE id = 1")
   Account findById();
 

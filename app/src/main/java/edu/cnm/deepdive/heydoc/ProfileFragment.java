@@ -14,6 +14,13 @@ import android.widget.RatingBar;
 import android.widget.RatingBar.OnRatingBarChangeListener;
 import edu.cnm.deepdive.heydoc.models.Practitioner;
 
+/**
+ * The ProfileFragment class has several elements to it including the calendar and the rating bar for
+ * each one of the practitioners. The practitioner list is called from the database and populated in
+ * the fragment and each populated profile has a rating bar consisting of 5 stars that are ratable to
+ * the .5. The floating action button wired in here allows the user to favorite a doctor which then
+ * populates in the navigation drawer menu option favorites.
+ */
 
 public class ProfileFragment extends Fragment {
 

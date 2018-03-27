@@ -21,8 +21,6 @@ public class EventAdapter extends ArrayAdapter<Event> {
 
   /**
    * Adapter that allows us to use context and objects as parameters for an Event on the calendar.
-   * @param context
-   * @param objects
    */
   public EventAdapter(Context context, List<Event> objects) {
     super(context, RESOURCE_ID, objects);
@@ -30,8 +28,9 @@ public class EventAdapter extends ArrayAdapter<Event> {
   }
 
   /**
-   * this method gets the view for the event adapter. The startDate, endDate, startTime, summaryEvent
-   * and stateEvent are retrieved from the XML and displayed in a TextView. 
+   * this method gets the view for the event adapter. The startDate, endDate, startTime,
+   * summaryEvent and stateEvent are retrieved from the XML and displayed in a TextView.
+   *
    * @param position as an int
    * @param convertView converts the view
    * @param parent from the the ViewGroup class
@@ -51,18 +50,17 @@ public class EventAdapter extends ArrayAdapter<Event> {
     Date end = new Date(((DateTime) event.getEnd().get("dateTime")).getValue());
     startDate.setText(
         DateFormat.getDateFormat(context).format(start));
-        startTime.setText(DateFormat.getTimeFormat(context).format(start));
+    startTime.setText(DateFormat.getTimeFormat(context).format(start));
     endTime.setText(
         DateFormat.getTimeFormat(context).format(end));
     summaryEvent.setText(event.getSummary());
     stateEvent.setText(event.getStatus());
 
-
-    Calendar service = new Calendar.Builder(httpTransport, jsonFactory, credentials)
-      .setApplicationName("applicationName").build();
-  service.events().delete(calendarID, "eventID").execute();
+//    Calendar service = new Calendar.Builder(httpTransport, jsonFactory, credentials)
+//      .setApplicationName("applicationName").build();
+//  service.events().delete(calendarID, "eventID").execute();
     return item;
+//  }
+
   }
-
-
 }

@@ -13,6 +13,12 @@ import android.widget.ListView;
 import edu.cnm.deepdive.heydoc.models.Practitioner;
 import java.util.List;
 
+/**
+ * The <code>PractitionerListFragment</code> creates the list of practitioners that is available to
+ * the user. The list of specialties is taken from the UniDatabase and populated into the navigation
+ * drop down under the title 'Specialty' It also allows for a wire-in to the doctors profile
+ * fragment named ProfileFragment.
+ */
 public class PractitionerListFragment extends Fragment {
 
   public static final String SPECIALTY_ID_KEY = "specialty_id_key";
@@ -22,15 +28,6 @@ public class PractitionerListFragment extends Fragment {
 
   }
 
-  /**
-   * This method creates the list of practitioners that is available to the user. The list of specialties
-   * is taken from the UniDatabase and populated into the navigation drop down under the title
-   * 'Specialty' It also allows for a wire-in to the doctors profile fragment named ProfileFragment.
-   * @param inflater layout of the practitioner fragment
-   * @param container ViewGroup
-   * @param savedInstanceState bundle
-   * @return view
-   */
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
       Bundle savedInstanceState) {

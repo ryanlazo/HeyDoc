@@ -13,6 +13,10 @@ import android.widget.ListView;
 import edu.cnm.deepdive.heydoc.models.Practitioner;
 import java.util.List;
 
+/**
+ * The <code>FavoritesFragment</code> inflates the fragment_favorites layout. It utilizes an adapter
+ * to help set a Doctor to your favorites.
+ */
 public class FavoritesFragment extends Fragment {
 
   private ListView fav;
@@ -23,15 +27,6 @@ public class FavoritesFragment extends Fragment {
 
   }
 
-  /**
-   * the onCreateView inflates the favorites fragment and updates the display every time the app is
-   * opened. Any doctors that have been saved will now be stored in the favorites icon in the
-   * navigation bar.
-   * @param inflater layout inflater
-   * @param container part of the ViewGroup class
-   * @param savedInstanceState as a bundle.
-   * @return view
-   */
   @Override
   public View onCreateView(LayoutInflater inflater, ViewGroup container,
       Bundle savedInstanceState) {
